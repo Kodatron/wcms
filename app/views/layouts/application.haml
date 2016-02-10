@@ -9,12 +9,14 @@
 
   %body
     %div.container
-      %div.columns
-        %div.one-fifth.column
-          %nav.menu
-            = link_to "Home", root_path, class: "menu-item selected"
-            = link_to "Admin", nil, class: "menu-item selected"
-            = link_to "Users", users_path, class: "menu-item selected"
+      %div.blankslate.clean-background
+        %span.mega-octicon.octicon-git-commit
+        %span.mega-octicon.octicon-tag
+        %span.mega-octicon.octicon-git-branch
+        %h3 Welcome to WCMS
+        %p WCMS is the most powerful tool for guilds, ever!
+
+      = render partial: 'layouts/partials/menu'
     %div.container
       = yield
-      = render partial: '/layouts/partials/footer'
+      = render partial: 'layouts/partials/footer'

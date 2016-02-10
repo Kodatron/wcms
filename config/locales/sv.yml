@@ -1,1 +1,9 @@
 sv:
+  #Locales
+  English: "Engelska"
+  Swedish: "Svenska"
+  
+  #Menu
+  Home: "Startsida"
+  Admin: "Admin"
+  Users: "Användare"

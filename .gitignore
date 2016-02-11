@@ -15,6 +15,10 @@
 /log/*
 !/log/.keep
 /tmp
+<<<<<<< 1a8ac2f330815013ab8b0907ee43f00ca8e21da0
 
 # Ignore application configuration
 /config/application.yml
+=======
+config/environment_variables.yml
+>>>>>>> Some config

@@ -1,1 +1,15 @@
 en:
+  #Locales
+  English: "English"
+  Swedish: "Swedish"
+
+  #Menu
+  Language: "Language"
+  Home: "Homepage"
+  Admin: "Admin"
+  Users: "Users"
+  About_us: "About us"
+  Blog: "Blog"
+  Progress: "Progress"
+  Login: "Log in"
+  Apply: "Apply"

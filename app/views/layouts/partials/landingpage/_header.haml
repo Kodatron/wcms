@@ -1,9 +1,9 @@
 %div.navbar-fixed
   %nav
     %div.nav-wrapper.container
-      %a.brand-logo{href: root_path}
+      = link_to "Family Legion", "", class: "brand-logo"
       %ul.right.hide-on-med-and-down
-        %li= link_to t(:Home), root_path
+        %li= link_to t(:Home), ""
         %li= link_to t(:About_us),"#"
         %li= link_to t(:Blog),"#"
         %li= link_to t(:Progress),"#"

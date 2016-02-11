@@ -5,4 +5,8 @@ class PagesController < ApplicationController
 
   def about_us
   end
+
+  def blog
+    @posts = Post.published.by_date
+  end
 end

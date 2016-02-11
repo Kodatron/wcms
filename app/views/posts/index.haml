@@ -1,0 +1,10 @@
+%div.container
+  %div.row
+    %div.col.16
+      %h4= t(:Blog)
+
+  %div.row
+    %div.col.16
+      - @posts.each do |post|
+        -#= link_to post.title, post_path(id: post)
+        = link_to t(:Edit), edit_post_path(id: post)

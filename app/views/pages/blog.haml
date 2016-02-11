@@ -1,0 +1,8 @@
+%div.container
+  %div.row
+    - @posts.each do |post|
+      %div.col.s12
+        %div.divider
+        %div.section
+          %h5= post.title
+          %p= post.body

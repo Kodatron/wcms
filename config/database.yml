@@ -1,10 +1,10 @@
 development:
   adapter: mysql2
-  database: wcms_dev
+  database: <%= ENV['db_base'] %>
   encoding: utf8
-  host: 127.0.0.1
-  username: root
-  password:
+  host: <%= ENV["db_host"] %>
+  username: <%= ENV["db_user"] %>
+  password: <%= ENV["db_pass"] %>
 
 test:
   adapter: mysql2

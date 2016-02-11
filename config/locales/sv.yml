@@ -2,8 +2,14 @@ sv:
   #Locales
   English: "Engelska"
   Swedish: "Svenska"
-  
+
   #Menu
+  Language: "Språk"
   Home: "Startsida"
   Admin: "Admin"
   Users: "Användare"
+  About_us: "Om oss"
+  Blog: "Blogg"
+  Progress: "Progress"
+  Login: "Logga in"
+  Apply: "Ansök"

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def resource_updated_flash
-  t(:Resource_updated, resource: controller_name.classify.constantize.model_name.human_definite.capitalize)
+  t(:Resource_updated, resource: controller_name.classify.constantize.model_name)
   end
 
   def resource_remove_error_flash

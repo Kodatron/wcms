@@ -5,12 +5,14 @@
       %div.input-field.col.s12
         = post.label :title
         = post.text_field :title, class: 'validate'
-  %div.row
-    %div.col.s12
-      %div.input-field.col.s6
+
+      %div.input-field.col.s12
         = post.label :body
         = post.text_area :body, class: 'materialize-textarea'
 
+      %div.input-field.col.s6
+        = post.label :published_at
+        = post.date_field :published_at, class: 'datepicker'
   %div.row
     %div.col.s12
       = post.submit t(:Save), class: 'waves-effect waves-light btn'

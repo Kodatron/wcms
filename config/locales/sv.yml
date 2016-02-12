@@ -17,3 +17,8 @@ sv:
   #Form
   Edit: "Ändra"
   Save: "Spara"
+
+  #Search
+  Search: "Sök.."
+  Search_results_for: "Visare sökresultat för '%{search}'. "
+  Show_all: "Visa alla."

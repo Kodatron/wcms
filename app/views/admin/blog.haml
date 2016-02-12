@@ -1,0 +1,24 @@
+%div.container
+  %div.row
+    %div.col.s12
+      - if @search
+        %p= search_results_for(@search)
+      %table.striped
+        %thead
+          %th= t(:Title)
+          %th= t(:Status)
+          %th= t(:Published)
+          %th= t(:Created_at)
+          %th
+        %tbody
+          - @posts.each do |post|
+            %tr
+              %td= post.title
+              %td= post.status
+              %td= post.published_at.to_date
+              %td= post.created_at.to_date
+              %td
+                = link_to t(:Edit), edit_post_path(post)
+  %div.row
+    %div.col.s12.pagination
+      = paginate(@posts)

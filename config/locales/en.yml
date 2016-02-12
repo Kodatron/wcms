@@ -17,3 +17,8 @@ en:
   #Form
   Edit: "Edit"
   Save: "Save"
+
+  #Search
+  Search: "Search.."
+  Search_results_for: "Search result for '%{search}'. "
+  Show_all: "Show all."

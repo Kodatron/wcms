@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
   scope :by_date, -> {
     where("published_at <= ?", Date.current).order("published_at DESC")
   }
+
+  scope :search, -> (term) {
+    where("title LIKE ?", *(["%#{term}%"]*1))
+  }
 end

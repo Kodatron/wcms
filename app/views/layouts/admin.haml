@@ -8,13 +8,6 @@
     = csrf_meta_tags
 
   %body
-    %div.container
-      %div.columns
-        %div.one-fifth.column
-          %nav.menu
-            = link_to t(:Home), root_path, class: "menu-item selected"
-            = link_to t(:Admin), nil, class: "menu-item selected"
-            = link_to t(:Users), users_path, class: "menu-item selected"
-    %div.container
-      = yield
-      = render partial: '/layouts/partials/footer'
+    = render partial: '/layouts/partials/admin/header'
+    = load_navbar
+    = yield

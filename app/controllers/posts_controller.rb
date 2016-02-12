@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   layout 'layouts/landingpage'
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_filter :check_admin, only: [:new, :edit, :update, :create, :destroy]
 
   def index
     @posts = Post.all
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post
   end
 
   def create

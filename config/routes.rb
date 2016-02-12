@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resources :users, :pages
     root :to => "pages#index"
     get 'about_us' => 'pages#about_us', as: :about
-    get 'blog' => 'pages#blog', as: :blog
+
+    namespace :admin do
+      get :index
+      get :blog
+    end
   end
 end

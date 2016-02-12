@@ -22,3 +22,8 @@ en:
   Search: "Search.."
   Search_results_for: "Search result for '%{search}'. "
   Show_all: "Show all."
+
+  #Blog
+  Views: "Views"
+  Read_more: "Read more.."
+  Published_at: "Published at"

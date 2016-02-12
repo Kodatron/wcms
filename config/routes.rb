@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  resources :users, :pages, :posts
+  resources :users
+  resources :pages
 
-  scope "(:locale)", locale: /en|sv/ do
+  root :to => "pages#index"
 
-    root :to => "pages#index"
-    get 'about_us' => 'pages#about_us', as: :about
+  get 'about_us' => 'pages#about_us', as: :about
 
-    namespace :admin do
-      get :index
-      get :blog
-    end
+  resources :posts do
+    get :change_status, as: :change_status
+  end
+
+  namespace :admin do
+    get :index
+    get :blog
   end
 end

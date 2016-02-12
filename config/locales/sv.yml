@@ -22,3 +22,8 @@ sv:
   Search: "Sök.."
   Search_results_for: "Visare sökresultat för '%{search}'. "
   Show_all: "Visa alla."
+
+  #Blog
+  Views: "Visningar"
+  Read_more: "Läs mer.."
+  Published_at: "Publicerad"

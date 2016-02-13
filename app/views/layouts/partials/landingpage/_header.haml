@@ -7,10 +7,11 @@
 
       %ul.left.hide-on-med-and-down
         %li= link_to t(:About_us), about_path
-        %li= link_to t(:Blog), posts_path
-        %li= link_to t(:Progress),"#"
-        %li= link_to t(:Login),"#modal-login", class: "modal-trigger"
-        %li= link_to t(:Apply),"#"
+        %li= link_to t(:Blog), "#"
+        %li= link_to t(:Progress), "#"
+      %ul.right.hide-on-med-and-down
+        %li= link_to t(:Apply), "#"
+        %li= link_to t(:Login), "#modal-login", class: "modal-trigger"
         %li
           =link_to t(:Language), "#!",  class: 'dropdown-button', "data-activates" => "dropdown1"
           %ul#dropdown1.dropdown-content

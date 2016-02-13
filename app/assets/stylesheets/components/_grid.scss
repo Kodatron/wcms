@@ -3,6 +3,13 @@
   max-width: 1280px;
   width: 90%;
 }
+
+.container-admin {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 95%;
+}
+
 @media #{$medium-and-up} {
   .container {
     width: 85%;

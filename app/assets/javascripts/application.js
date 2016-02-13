@@ -16,6 +16,7 @@
 //= require_tree .
 $('document').ready(function(){
    $('.modal-trigger').leanModal();
+   $(".button-collapse").sideNav();
 
    $('.dropdown-button').dropdown({
       inDuration: 300,
@@ -24,6 +25,6 @@ $('document').ready(function(){
       hover: true,
       gutter: 0,
       belowOrigin: true,
-      alignment: 'left' 
+      alignment: 'left'
     });
 });

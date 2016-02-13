@@ -1,0 +1,14 @@
+// Navbar
+
+.nav-container{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media #{$medium-and-down} {
+  .brand-logo{
+    img{
+        height: 55px;
+    }
+  }
+}

@@ -12,7 +12,8 @@
  *
 
  *= require_self
- *= require materialize
  */
+@import "materialize";
 @import 'mixins.scss';
 @import 'app/pages.scss';
+@import 'styles.scss';

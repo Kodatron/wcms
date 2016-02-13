@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  resources :users, :pages
+
+  resources :users, :pages, :posts
 
   scope "(:locale)", locale: /en|sv/ do
 

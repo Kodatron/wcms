@@ -1,0 +1,60 @@
+%div.container-admin
+  %div.row
+    %div.col.s2
+      = render partial: 'admin/partials/menu'
+
+    %div.col.s10
+      %div.col.s3
+        %div.card.blue-grey.darken-1
+          %div.card-content.white-text
+            %span.card-title Applications
+            %p You have 5 pending applications
+          %div.card-action
+            = link_to "See applications", "#"
+
+      %div.col.s3
+        %div.card.blue-grey.darken-1
+          %div.card-content.white-text
+            %span.card-title Next raid
+            %p 12 nerds har anmält sig till raiden Blackrock Hold
+          %div.card-action
+            = link_to "See raid", "#"
+
+      %div.col.s3
+        %div.card.blue-grey.darken-1
+          %div.card-content.white-text
+            %span.card-title Raidgrupp
+            %p Det finns ingen raidgrupp skapad för nästa raid
+          %div.card-action
+            = link_to "Solve raid group", "#"
+
+      %div.col.s3
+        %div.card.blue-grey.darken-1
+          %div.card-content.white-text
+            %span.card-title Alt requests
+            %p You have 5 pending alt requests
+          %div.card-action
+            = link_to "See requests", "#"
+
+
+      %div.col.s6
+        %h5 Uppgifter
+        %small You got stuffz to do!
+        %ul.collection
+          - (0..3).each do |i|
+            %li.collection-item.avatar.admin-item
+              %i.material-icons.circle assignment
+              %span.title
+                i
+              %p First line
+
+      %div.col.s6
+        %h5 Händelser
+        %small Detta har hänt sedan sist!
+        %ul.collection
+          - (0..3).each do |i|
+            %li.collection-item.avatar.admin-item
+              %i.material-icons.circle notifications_active
+              %span.title
+                i
+              %p First line

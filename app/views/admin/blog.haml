@@ -1,0 +1,28 @@
+%div.container
+  %div.row
+    %div.col.s12
+      - if @search
+        %p= search_results_for(@search)
+      %table.striped
+        %thead
+          %th= t(:Title)
+          %th= t(:Status)
+          %th= t(:Views)
+          %th= t(:Published)
+          %th= t(:Created_at)
+          %th
+        %tbody
+          - @posts.each do |post|
+            %tr
+              %td= link_to post.title, post_path(post)
+              %td
+                = link_to post.status.capitalize, post_change_status_path(post_id: post.id), data: {confirm: 'Are you sure?'}
+              %td= post.views
+              %td= post.published_at.to_date
+              %td= post.created_at.to_date
+              %td
+                = link_to t(:Edit), edit_post_path(post)
+                = link_to t(:Delete), post_path(post), method: :delete, data: {confirm: 'Are you sure?'}
+  %div.row
+    %div.col.s12.pagination
+      = paginate(@posts)

@@ -1,0 +1,11 @@
+%div.columns
+  %div.one-fifth.column
+    %nav.menu
+      %span.menu-heading= t(:Menu)
+      = link_to t(:Home), "", class: "menu-item"
+      = link_to t(:Admin), "#", class: "menu-item"
+      = link_to t(:Users), users_path, class: "menu-item"
+    %nav.menu
+      %span.menu-heading= t(:Language)
+      = link_to t(:English), params.merge(locale: "en"), class: "menu-item"
+      = link_to t(:Swedish), params.merge(locale: "sv"), class: "menu-item"

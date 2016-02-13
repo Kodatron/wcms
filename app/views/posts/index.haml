@@ -1,0 +1,15 @@
+%div.container
+  %div.row
+    %div.col.16
+      %h4= t(:Blog)
+
+  %div.row
+    %div.col.16.section
+      - @posts.each do |post|
+        %h5= link_to post.title, post_path(post)
+        %small= "#{t(:Published_at)}: #{post.published_at.to_date} | #{t(:Views)}: #{post.views}"
+
+        %p
+          = truncate(post.body, length: 200)
+          = link_to t(:Read_more), post_path(post)
+        %div.divider

@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
+gem 'kaminari'
+gem 'figaro'
+gem 'meta_nexus'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

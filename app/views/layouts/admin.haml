@@ -7,7 +7,7 @@
     = javascript_include_tag :application, data: { turbolinks_track: true }
     = csrf_meta_tags
 
-  %body
+  %body.admin
     = render partial: '/layouts/partials/admin/header'
     = load_navbar
     = yield

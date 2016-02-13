@@ -57,8 +57,8 @@ $dropdown-color: #fff !default;
 $dropdown-item-height: 50px !default;
 
 /*** Fonts ***/
-$roboto-font-path: "../font/roboto/" !default;
-$icons-font-path: "../font/material-design-icons/" !default;
+$roboto-font-path: "/assets/font/roboto/" !default;
+$icons-font-path: "/assets/font/material-design-icons/" !default;
 
 /*** Forms ***/
 // Text Inputs + Textarea
@@ -104,7 +104,7 @@ $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
 
 /*** Navbar ***/
-$navbar-height: 64px !default;
+$navbar-height: 80px !default;
 $navbar-height-mobile: 56px !default;
 $navbar-font-color: #fff !default;
 $navbar-brand-font-size: 2.1rem !default;

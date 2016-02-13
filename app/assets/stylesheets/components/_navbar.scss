@@ -19,7 +19,6 @@ nav {
 
   .nav-wrapper {
     position: relative;
-    height: 100%;
   }
 
   @media #{$large-and-up} {
@@ -82,6 +81,7 @@ nav {
   // Navbar Links
   ul {
     margin: 0;
+
 
     li {
       transition: background-color .3s;

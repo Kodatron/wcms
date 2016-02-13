@@ -1,9 +1,11 @@
 %div.navbar-fixed
   %nav
-    %div.nav-wrapper.container
-      = link_to "Family Legion", root_path, class: "brand-logo"
-      %ul.right.hide-on-med-and-down
-        %li= link_to t(:Home), root_path
+    %div.nav-wrapper.nav-container
+      = link_to image_tag("logos/logo.png", :border => 0), root_path, class: "brand-logo center"
+      = link_to  "#", "data-activates" => "mobile-nav", class: "button-collapse" do
+        %i.material-icons menu
+
+      %ul.left.hide-on-med-and-down
         %li= link_to t(:About_us), about_path
         %li= link_to t(:Blog), posts_path
         %li= link_to t(:Progress),"#"
@@ -14,6 +16,13 @@
           %ul#dropdown1.dropdown-content
             %li= link_to t(:English), params.merge(locale: "en")
             %li= link_to t(:Swedish), params.merge(locale: "sv")
+
+      %ul.side-nav#mobile-nav
+        %li= link_to t(:About_us), about_path
+        %li= link_to t(:Blog), "#"
+        %li= link_to t(:Progress),"#"
+        %li= link_to t(:Apply), "#"
+        %li= link_to t(:Login), "#modal-login", class: "modal-trigger"
 
 %div#modal-login.modal
   %div.modal-content

@@ -66,8 +66,8 @@ class PostsController < ApplicationController
 
     def increase_views
       @post.increment!(:views)
-
     end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])

@@ -1,0 +1,5 @@
+- unless target.errors.full_messages.blank?
+	.form-errors
+		%ul
+			- target.errors.full_messages.each do |error|
+				%li= raw((error[-2..-1].include?('.')) ? error : "#{error}.")

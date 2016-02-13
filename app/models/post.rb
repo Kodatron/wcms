@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base
   enum status: [:draft, :published]
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :published_at, presence: true
 
   #scopes
   scope :by_date, -> {

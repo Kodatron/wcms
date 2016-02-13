@@ -13,10 +13,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    render layout: 'layouts/admin'
   end
 
   def edit
-    @post
+    render layout: 'layouts/admin'
   end
 
   def create
@@ -67,7 +68,7 @@ class PostsController < ApplicationController
     def increase_views
       @post.increment!(:views)
     end
-    
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])

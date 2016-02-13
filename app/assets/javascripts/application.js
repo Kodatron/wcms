@@ -17,9 +17,19 @@
 
 $( document ).ready(function() {
 
+  $('.modal-trigger').leanModal();
+
+  $('.dropdown-button').dropdown({
+     inDuration: 300,
+     outDuration: 225,
+     constrain_width: true,
+     hover: true,
+     gutter: 0,
+     belowOrigin: true,
+     alignment: 'left'
+   });
+
   $('.datepicker').pickadate({
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
     });
-    
-});

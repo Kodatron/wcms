@@ -7,10 +7,18 @@
         %li= link_to t(:About_us), about_path
         %li= link_to t(:Blog), posts_path
         %li= link_to t(:Progress),"#"
-        %li= link_to t(:Login),"#"
+        %li= link_to t(:Login),"#modal-login", class: "modal-trigger"
         %li= link_to t(:Apply),"#"
         %li
           =link_to t(:Language), "#!",  class: 'dropdown-button', "data-activates" => "dropdown1"
           %ul#dropdown1.dropdown-content
             %li= link_to t(:English), params.merge(locale: "en")
             %li= link_to t(:Swedish), params.merge(locale: "sv")
+
+%div#modal-login.modal
+  %div.modal-content
+    %form.col.s12
+      %div.row
+        %div.input-field.col.s12
+          %input{id: "email", type: "email", class: "validate"}
+          %label{for: "email"}=t(:Email)

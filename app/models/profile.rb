@@ -6,8 +6,9 @@ class Profile < ActiveRecord::Base
   validates :server, presence: true
 
   enum region: [:eu, :us, :tw, :kr, :sea]
-  enum class: [:death_knight, :druid, :hunter, :warlock, :mage,
-              :paladin, :shaman, :warrior, :priest, :monk, :rogue, :demon_hunter]
+  enum class: [
+             :death_knight, :druid, :hunter, :warlock, :mage,
+             :paladin, :shaman, :warrior, :priest, :monk, :rogue, :demon_hunter]
 
   belongs_to :user
 end

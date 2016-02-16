@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+  scope :search, -> (term) {
+    joins("INNER JOIN profiles p on user_id = p.user_id").
+    where("users.name LIKE ? or users.email LIKE ? or p.firstname LIKE ? or p.lastname LIKE ? or p.wow_region LIKE ? or p.wow_server or p.phone LIKE ?", *(["%#{term}%"]*6))
+  }
+
 end

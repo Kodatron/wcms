@@ -21,13 +21,18 @@ class AdminController < ApplicationController
     @search = params[:term]
 
     if @search = params[:term]
-      @news = @news.serach(@search)
+      @news = @news.search(@search)
     end
     @news = paginate(@news)
   end
 
   def users
+    @search = params[:term]
     @users = User.all.includes(:profile)
+
+    if @search
+      @users = @users.search(@search)
+    end
     @users = paginate(@users)
   end
 

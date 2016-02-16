@@ -4,7 +4,7 @@ development:
   encoding: utf8
   host: <%= ENV["DB_HOST"] %>
   username: <%= ENV["DB_USERNAME"] %>
-  password:
+  password: <%= ENV["DB_PASS"] %>
 
 
 test:

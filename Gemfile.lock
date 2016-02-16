@@ -78,8 +78,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    meta_nexus (1.0.0)
-      httparty (~> 0.13.5)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -118,6 +116,8 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
+    rbattlenet (1.1.0)
+      httparty (~> 0.13.6)
     rdoc (4.2.2)
       json (~> 1.4)
     sass (3.4.21)
@@ -166,10 +166,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  meta_nexus
   mysql2
   quiet_assets
   rails (= 4.2.5.1)
+  rbattlenet
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

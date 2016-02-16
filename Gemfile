@@ -12,7 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'kaminari'
 gem 'figaro'
-gem 'meta_nexus'
+gem 'rbattlenet'
 gem 'bcrypt'
 
 # Use Capistrano for deployment

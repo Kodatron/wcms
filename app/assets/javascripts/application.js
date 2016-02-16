@@ -18,7 +18,7 @@
 $( document ).ready(function() {
   $('.modal-trigger').leanModal();
   $(".button-collapse").sideNav();
-
+  $('select').material_select();
   $('.dropdown-button').dropdown({
      inDuration: 300,
      outDuration: 225,

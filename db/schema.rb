@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215163453) do
+ActiveRecord::Schema.define(version: 20160216180812) do
 
   create_table "news", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -34,11 +34,27 @@ ActiveRecord::Schema.define(version: 20160215163453) do
     t.datetime "updated_at",                             null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "email",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "wow_region", limit: 1,   default: 0
+    t.string   "wow_server", limit: 255
+    t.integer  "wow_class",  limit: 1,   default: 0
+    t.string   "firstname",  limit: 255
+    t.string   "lastname",   limit: 255
+    t.string   "phone",      limit: 255
+    t.string   "avatar",     limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "users", ["email", "name"], name: "index_users_on_email_and_name", unique: true, using: :btree
 
 end

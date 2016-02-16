@@ -13,6 +13,7 @@ gem 'haml'
 gem 'kaminari'
 gem 'figaro'
 gem 'meta_nexus'
+gem 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

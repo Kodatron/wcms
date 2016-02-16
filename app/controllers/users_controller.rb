@@ -19,36 +19,24 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to @user, notice: 'User was successfully created.'
+    else
+      render status: 402, action: :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render status: 402, action: :edit
     end
   end
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_users_path, notice: 'User was successfully destroyed.'
   end
 
   private
@@ -59,10 +47,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-      :name,
-      :email,
-      :password,
-      :password_confirmation,
+      :name, :email, :password, :password_confirmation,
       profile_attributes: [:user_id, :firstname, :lastname, :phone, :wow_region, :wow_server, :wow_class]
       )
     end

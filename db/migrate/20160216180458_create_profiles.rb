@@ -1,10 +1,10 @@
 class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
-      t.belongs_to :user, index: true
-      t.integer :region, limit: 1, default: 0
-      t.string  :server
-      t.integer :class, limit: 1, default: 0
+      t.integer :user_id
+      t.integer :wow_region, limit: 1, default: 0
+      t.string  :wow_server
+      t.integer :wow_class, limit: 1, default: 0
       t.string  :firstname
       t.string  :lastname
       t.string  :phone

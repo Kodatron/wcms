@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20160216180812) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.integer  "region",     limit: 1,   default: 0
-    t.string   "server",     limit: 255
-    t.integer  "class",      limit: 1,   default: 0
+    t.integer  "wow_region", limit: 1,   default: 0
+    t.string   "wow_server", limit: 255
+    t.integer  "wow_class",  limit: 1,   default: 0
     t.string   "firstname",  limit: 255
     t.string   "lastname",   limit: 255
     t.string   "phone",      limit: 255
@@ -46,8 +46,6 @@ ActiveRecord::Schema.define(version: 20160216180812) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
-
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            limit: 255

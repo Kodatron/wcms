@@ -3,41 +3,42 @@
     =if @user.errors.any?
       %div.error_explanation
         %h2
-          =pluralize(@user.errors.count, "error") prohibited this user from being saved:
+          =pluralize(@user.errors.count, "error")
+          prohibited this user from being saved:
         %ul
           =@user.errors.full_messages.each do |message|
             %li message
     %div.input_field.col.s6
-        =f.label :name
-        =f.text_field :name
-      %div.input_field.col.s6
-        =f.label :email
-        =f.email_field :email
-      %div.input_field.col.s6
-        =f.label :password
-        =f.password_field :password
-      %div.input_field.col.s6
-        =f.label :password_confirmation, "Confirmation"
-        =f.password_field :password_confirmation
+      =f.label :name
+      =f.text_field :name
+    %div.input_field.col.s6
+      =f.label :email
+      =f.email_field :email
+    %div.input_field.col.s6
+      =f.label :password
+      =f.password_field :password
+    %div.input_field.col.s6
+      =f.label :password_confirmation, "Confirmation"
+      =f.password_field :password_confirmation
 
-      =f.fields_for :profile do |profile|
-        %div.input_field.col.s6
-          =profile.label :firstname
-          =profile.text_field :firstname
-        %div.input_field.col.s6
-          =profile.label :lastname
-          =profile.text_field :lastname
-        %div.input_field.col.s6
-          =profile.label :phone
-          =profile.text_field :phone
-        %div.input_field.col.s6
-          =profile.label  :server
-          =profile.text_field :server
-        %div.input_field.col.s6
-          =profile.label :class
-          =select_tag(:class, options_for_select([["Death Knight", "death_knight"],["Druid", "druid"],["Hunter", "hunter"],["Warlock", "warlock"],["Mage", "mage"], ["Paladin", "paladin"], ["Shaman", "shaman"], ["Warrior", "warrior"],["Priest", "priest"], ["Monk", "monk"], ["Rogue", "rogue"],["Demon Hunter", "demon_hunter"]]))
-        %div.input_field.col.s6
-          =profile.label :region
-          =select_tag(:region, options_for_select([["Europe", "eu"], ["North America", "us"], ["Korea", "kr"], ["Taiwan", "tw"], ["South Eas Asia", "sea"]]))
-        %div.input_field.col.s12
-        =f.submit "Create User", class: "btn btn-primary"
+    =f.fields_for :profile do |profile|
+      %div.input_field.col.s6
+        =profile.label :firstname
+        =profile.text_field :firstname
+      %div.input_field.col.s6
+        =profile.label :lastname
+        =profile.text_field :lastname
+      %div.input_field.col.s6
+        =profile.label :phone
+        =profile.text_field :phone
+      %div.input_field.col.s6
+        =profile.label  :wow_server
+        =profile.text_field :wow_server
+      %div.input_field.col.s6
+        =profile.label :wow_class
+        =select_tag(:wow_class, options_for_select([["Death Knight", "death_knight"],["Druid", "druid"],["Hunter", "hunter"],["Warlock", "warlock"],["Mage", "mage"], ["Paladin", "paladin"], ["Shaman", "shaman"], ["Warrior", "warrior"],["Priest", "priest"], ["Monk", "monk"], ["Rogue", "rogue"],["Demon Hunter", "demon_hunter"]]))
+      %div.input_field.col.s6
+        =profile.label :wow_region
+        =select_tag(:wow_region, options_for_select([["Europe", "eu"], ["North America", "us"], ["Korea", "kr"], ["Taiwan", "tw"], ["South Eas Asia", "sea"]]))
+      %div.input_field.col.s12
+      =f.submit "Create User", class: "btn btn-primary"

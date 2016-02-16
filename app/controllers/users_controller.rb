@@ -61,7 +61,8 @@ class UsersController < ApplicationController
       :name,
       :email,
       :password,
-      profile_attributes: [:firstname, :lastname, :phone, :region, :server, :class]
+      :password_confirmation,
+      profile_attributes: [:user_id, :firstname, :lastname, :phone, :wow_region, :wow_server, :wow_class]
       )
     end
 end

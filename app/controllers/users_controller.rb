@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout 'layouts/landingpage'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index

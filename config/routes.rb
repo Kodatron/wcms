@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     get :index
     get :blog
     get :news
+    get :users
   end
 end

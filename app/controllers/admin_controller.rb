@@ -13,7 +13,7 @@ class AdminController < ApplicationController
       @posts = @posts.search(@search)
     end
 
-    @posts = @posts.page(params[:page]).per(15)
+    @posts = paginate(@posts)
   end
 
   def news
@@ -23,8 +23,16 @@ class AdminController < ApplicationController
     if @search = params[:term]
       @news = @news.serach(@search)
     end
-    @news = @news.page(params[:page]).per(15)
+    @news = paginate(@news)
+  end
+
+  def users
+    @users = User.all.includes(:profile)
+    @users = paginate(@users)
   end
 
   private
+  def paginate collection
+    @collection = collection.page(params[:page]).per(15)
+  end
 end

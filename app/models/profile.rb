@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  #before_save { self.wow_server = wow_server.downcase.sub! ' ', '-' }
+  before_save :downcase_server
   after_create :init_character_avatar
   validates :firstname, presence: true
   validates :lastname, presence: true
@@ -19,5 +19,9 @@ class Profile < ActiveRecord::Base
     thumbnail = character['thumbnail']
     self.avatar = thumbnail
     self.save!
+  end
+
+  def downcase_server
+    self.wow_server = wow_server.downcase.sub!(' ', '-') if self.new_record?
   end
 end

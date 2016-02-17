@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   before_action :check_admin
 
   def index
+    @applications = GuildApplication.pending.count
   end
 
   def blog
@@ -34,6 +35,11 @@ class AdminController < ApplicationController
       @users = @users.search(@search)
     end
     @users = paginate(@users)
+  end
+
+  def applications
+    @applications = GuildApplication.pending
+    @applications = paginate(@applications)
   end
 
   private

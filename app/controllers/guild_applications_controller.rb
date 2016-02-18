@@ -1,13 +1,12 @@
 class GuildApplicationsController < ApplicationController
+  require 'securerandom'
   layout 'layouts/admin'
   before_action :check_admin, except: [:new]
   before_action :set_guild_application, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @guild_applications = GuildApplication.all
-  end
+  before_action :init_wow_api
 
   def show
+    @stats = RBattlenet::Wow::Character.find(name: @guild_application.wow_name, realm: @guild_application.wow_server, fields: ["items"])
   end
 
   def new
@@ -18,13 +17,14 @@ class GuildApplicationsController < ApplicationController
   def approve
     @guild_application = GuildApplication.find(params[:guild_application_id])
     if @guild_application.approved!
+      create_user_and_profile_from_application(@guild_application)
       redirect_to admin_applications_path
     end
   end
 
   def decline
     @guild_application = GuildApplication.find(params[:guild_application_id])
-    if @guild_application.dec lined!
+    if @guild_application.declined!
       redirect_to admin_applications_path
     end
   end
@@ -66,7 +66,28 @@ class GuildApplicationsController < ApplicationController
     end
   end
 
+  def create_user_and_profile_from_application ga
+    @user = User.new(name: ga.wow_name, email: ga.email, password: SecureRandom.hex(8))
+    @user.save!
+    @profile = Profile.new(user_id: @user.id, wow_server: ga.wow_server, wow_region: ga.wow_region, wow_class: ga.wow_class, firstname: ga.firstname, lastname: ga.lastname, phone: ga.phone, avatar: init_character_avatar(ga.wow_name, ga.wow_server))
+    @profile.save!
+  end
+
   private
+    # TODO: Move to api-module
+    def init_character_avatar name, realm
+      RBattlenet.authenticate(api_key: ENV['BLIZZ_KEY'])
+      RBattlenet.set_region(region: "eu", locale: "en_GB")
+      character = RBattlenet::Wow::Character.find(name: name, realm: realm)
+      character['thumbnail']
+    end
+
+    def init_wow_api
+      @wow ||= RBattlenet.authenticate(api_key: ENV['BLIZZ_KEY'])
+      @wow ||= RBattlenet.set_region(region: "eu", locale: "en_GB")
+      @wow
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_guild_application
       @guild_application = GuildApplication.find(params[:id])

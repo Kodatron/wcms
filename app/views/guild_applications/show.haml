@@ -1,10 +1,16 @@
 %div.container
   %div.row
     %div.col.s12
-      %h5.center-align
-        = "Application made by #{@guild_application.wow_name}"
-        %small.center-align= " | Sent in at #{@guild_application.created_at.to_date}"
+      %div.card
+        %div.card-image
+          = image_tag('1293601.jpg')
+          -#= image_tag(render_thumbnail_url(@guild_application.wow_region, @stats['thumbnail']), width: "50%", class: 'circle')
+          %span.card-title= "#{@guild_application.wow_name} - #{@guild_application.created_at.to_date}"
+        %div.card-content
+          %h6= @stats['level']
 
+  %div.row
+    %div.col.s12
       %ul.collapsible{"data-collapsible" => "accordion"}
         %li
           %div.collapsible-header

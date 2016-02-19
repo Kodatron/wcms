@@ -2,18 +2,12 @@
 %html
   %head
     %title
-
     = stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: true }
     = javascript_include_tag :application, data: { turbolinks_track: true }
     = csrf_meta_tags
 
   %body
-    %div.container
-      %div.blankslate.clean-background
-        %h3 Welcome to WCMS
-        %p WCMS is the most powerful tool for guilds, ever!
-
-      = render partial: 'layouts/partials/menu'
+    = render partial: 'layouts/partials/main_menu'
     %div.container
       = yield
-      = render partial: 'layouts/partials/footer'
+    = render partial: 'layouts/partials/footer'

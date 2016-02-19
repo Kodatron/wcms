@@ -1,1 +1,11 @@
+%div.container
+  %div.row
+    %div.col.16
+      %h4= t(:Users)
 
+  %div.row
+    %div.col.16.section
+      - @users.each do |user|
+        %h5= link_to user.name, users_path(user)
+        %small= "#{t(:email)}"
+        %div.divider

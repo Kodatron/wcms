@@ -12,7 +12,17 @@
 .margin-top{
   margin-top: 10px;
 }
-
+.img-nav{
+    width: 40px;
+    height: 40px;
+    margin-top: 6px;
+}
+.border-img {
+    border: 2px solid #000000;
+    -moz-box-shadow: 0 0 5px #000;
+    -webkit-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+}
 @media #{$medium-and-down} {
   .brand-logo{
     img{

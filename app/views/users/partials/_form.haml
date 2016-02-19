@@ -1,13 +1,6 @@
 %div.row
   =form_for(@user) do |f|
-    =if @user.errors.any?
-      %div.error_explanation
-        %h2
-          =pluralize(@user.errors.count, "error")
-          prohibited this user from being saved:
-        %ul
-          =@user.errors.full_messages.each do |message|
-            %li message
+    = render 'shared/form_errors', target: @user
     %div.input_field.col.s6
       =f.label :name
       =f.text_field :name
@@ -36,9 +29,9 @@
         =profile.text_field :wow_server
       %div.input_field.col.s6
         =profile.label :wow_class
-        =select_tag(:wow_class, options_for_select([["Death Knight", "death_knight"],["Druid", "druid"],["Hunter", "hunter"],["Warlock", "warlock"],["Mage", "mage"], ["Paladin", "paladin"], ["Shaman", "shaman"], ["Warrior", "warrior"],["Priest", "priest"], ["Monk", "monk"], ["Rogue", "rogue"],["Demon Hunter", "demon_hunter"]]))
+        =profile.select :wow_class,  Profile.wow_classes.keys.to_a.map { |w| [w.humanize, w]}
       %div.input_field.col.s6
         =profile.label :wow_region
-        =select_tag(:wow_region, options_for_select([["Europe", "eu"], ["North America", "us"], ["Korea", "kr"], ["Taiwan", "tw"], ["South Eas Asia", "sea"]]))
+        =profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
       %div.input_field.col.s12
       =f.submit "Create User", class: "btn btn-primary"

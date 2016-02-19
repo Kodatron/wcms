@@ -11,7 +11,7 @@
         %li= link_to t(:Progress), "#"
       %ul.right.hide-on-med-and-down
         %li= link_to t(:Apply), "#"
-        %li= link_to t(:Login), "#modal-login", class: "modal-trigger"
+        %li= link_to t(:Login), login_path
         %li
           =link_to t(:Language), "#!",  class: 'dropdown-button', "data-activates" => "dropdown1"
           %ul#dropdown1.dropdown-content
@@ -24,11 +24,3 @@
         %li= link_to t(:Progress),"#"
         %li= link_to t(:Apply), "#"
         %li= link_to t(:Login), "#modal-login", class: "modal-trigger"
-
-%div#modal-login.modal
-  %div.modal-content
-    %form.col.s12
-      %div.row
-        %div.input-field.col.s12
-          %input{id: "email", type: "email", class: "validate"}
-          %label{for: "email"}=t(:Email)

@@ -6,6 +6,9 @@ class PagesController < ApplicationController
   def about_us
   end
 
+  def dashboard
+    render layout: 'layouts/application'
+  end
   def blog
     @posts = Post.published.by_date
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217162344) do
+ActiveRecord::Schema.define(version: 20160220172301) do
 
   create_table "guild_applications", force: :cascade do |t|
     t.string   "wow_name",   limit: 255
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160217162344) do
     t.string   "password_digest", limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "remember_digest", limit: 255
   end
 
   add_index "users", ["email", "name"], name: "index_users_on_email_and_name", unique: true, using: :btree

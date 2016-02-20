@@ -20,5 +20,6 @@ module Wcms
     config.active_record.raise_in_transactional_callbacks = true
     #I18n
     config.i18n.default_locale = :en
+    config.autoload_paths << "#{config.root}/app/"
   end
 end

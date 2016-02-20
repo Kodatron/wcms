@@ -23,6 +23,7 @@ group :development, :test do
   gem 'byebug'
   # Removes all the logs from the terminal
   gem 'quiet_assets'
+  gem "letter_opener"
 end
 
 group :development do

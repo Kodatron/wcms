@@ -1,0 +1,8 @@
+%p= "Hej #{@user.profile.firstname}!"
+%p Din ansökan har blivit godkänd. Dina inloggninsuppgifter är:
+%ul
+  %li= "Användarnamn: #{@user.email}"
+  %li= "Lösenord: #{@password}"
+%p= "Meddelande: #{@reason}"
+%p Du kan alltid byta lösenord när du är inloggad.
+%p= "Mvh #{@admin.name} - WCMS Crew"

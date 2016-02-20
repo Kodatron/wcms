@@ -18,9 +18,11 @@ class UsersController < ApplicationController
   end
 
   def create
+    password = user_params[:password]
     @user = User.new(user_params)
     @user.profile['avatar'] = init_character_avatar(user_params)
     if @user.save
+      UserMailer.new_user_email(@user, current_user, password).deliver_now
       redirect_to @user, notice: 'User was successfully created.'
     else
       render status: 402, action: :new

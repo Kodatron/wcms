@@ -17,7 +17,7 @@ class GuildApplicationsController < ApplicationController
   def approve
     @guild_application = GuildApplication.find(params[:guild_application_id])
     if @guild_application.approved!
-      create_user_and_profile_from_application(@guild_application)
+      create_user_and_profile_from_application(@guild_application, params[:reason])
       redirect_to admin_applications_path
     end
   end
@@ -25,6 +25,7 @@ class GuildApplicationsController < ApplicationController
   def decline
     @guild_application = GuildApplication.find(params[:guild_application_id])
     if @guild_application.declined!
+      UserMailer.declined_application_email(@guild_application, params[:reason], current_user).deliver_now
       redirect_to admin_applications_path
     end
   end
@@ -34,9 +35,10 @@ class GuildApplicationsController < ApplicationController
 
   def create
     @guild_application = GuildApplication.new(guild_application_params)
-
     respond_to do |format|
       if @guild_application.save
+        UserMailer.guild_application_email(@guild_application).deliver_now
+        AdminMailer.new_application_mail(@guild_application).deliver_now
         format.html { redirect_to @guild_application, notice: 'Guild application was successfully created.' }
         format.json { render :show, status: :created, location: @guild_application }
       else
@@ -66,11 +68,13 @@ class GuildApplicationsController < ApplicationController
     end
   end
 
-  def create_user_and_profile_from_application ga
-    @user = User.new(name: ga.wow_name, email: ga.email, password: SecureRandom.hex(8))
+  def create_user_and_profile_from_application(ga, reason)
+    password = SecureRandom.hex(8)
+    @user = User.new(name: ga.wow_name, email: ga.email, password: password)
     @user.save!
     @profile = Profile.new(user_id: @user.id, wow_server: ga.wow_server, wow_region: ga.wow_region, wow_class: ga.wow_class, firstname: ga.firstname, lastname: ga.lastname, phone: ga.phone, avatar: init_character_avatar(ga.wow_name, ga.wow_server))
     @profile.save!
+    UserMailer.approved_application_email(@user, password, reason, current_user).deliver_now
   end
 
   private

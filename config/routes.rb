@@ -11,18 +11,24 @@ Rails.application.routes.draw do
   get 'about_us' => 'pages#about_us', as: :about
   get 'dashboard' => 'pages#dashboard', as: :dashboard
 
-  resources :posts do
-    get :change_status, as: :change_status
+  namespace :admin do
+    get :index
+    get :blog
+    get :news
+    get :users
+    get :applications
+  end
+
+  resources :guild_applications do
+    get :approve
+    get :decline
   end
 
   resources :news do
     get :change_status
   end
 
-  namespace :admin do
-    get :index
-    get :blog
-    get :news
-    get :users
+  resources :posts do
+    get :change_status, as: :change_status
   end
 end

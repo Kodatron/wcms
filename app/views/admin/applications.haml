@@ -1,0 +1,30 @@
+%div.container
+  %div.row
+    %div.col.s12
+      - if @search
+        %p= search_results_for(@search)
+      %table.striped
+        %thead
+          %th= t(:Namn)
+          %th= t(:Class)
+          %th= t(:Spec)
+          %th= t(:Region)
+          %th= t(:Server)
+          %th= t(:Status)
+          %th
+        %tbody
+          - @applications.each do |a|
+            %tr
+              %td= link_to a.wow_name, guild_application_path(a)
+              %td= a.wow_class.humanize.titleize
+              %td= a.wow_spec
+              %td= a.wow_region.humanize.titleize
+              %td= a.wow_server.humanize.titleize
+              %td= a.status.titleize
+              %td
+                = link_to "Approve", guild_application_approve_path(a)
+                |
+                = link_to "Decline", guild_application_decline_path(a)
+  %div.row
+    %div.col.s12.pagination
+      = paginate(@applications)

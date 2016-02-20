@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Guild Applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guild_applications.each do |guild_application| %>
+      <tr>
+        <td><%= link_to 'Show', guild_application %></td>
+        <td><%= link_to 'Edit', edit_guild_application_path(guild_application) %></td>
+        <td><%= link_to 'Destroy', guild_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guild application', new_guild_application_path %>

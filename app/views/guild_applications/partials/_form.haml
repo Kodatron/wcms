@@ -1,0 +1,82 @@
+= form_for(@guild_application) do |f|
+  %div.row
+    %div.col.s12
+      %h5 Personligt
+      %div.input_field.col.s6
+        =f.label :firstname
+        =f.text_field :firstname
+      %div.input_field.col.s6
+        =f.label :lastname
+        =f.text_field :lastname
+
+      %div.input_field.col.s6
+        =f.label :email
+        =f.email_field :email
+
+      %div.input_field.col.s6
+        =f.label :phone
+        =f.text_field :phone
+      %div.input_field.col.s6
+        =f.label :age
+        =f.text_field :age
+
+  %div.row
+    %div.col.s12
+      %h5 Wow-inställningar
+      %div.input_field.col.s6
+        =f.label :wow_name
+        =f.text_field :wow_name
+
+      %div.input_field.col.s6
+        =f.label :wow_server
+        =f.text_field :wow_server
+
+      %div.input_field.col.s6
+        =f.label :wow_region
+        = f.select(:wow_region, GuildApplication.wow_regions.keys.map {|w| [w.titleize,w]})
+
+      %div.input_field.col.s6
+        =f.label :wow_class
+        = f.select(:wow_class, GuildApplication.wow_classes.keys.map {|w| [w.titleize, w]})
+
+      %div.input_field.col.s6
+        =f.label :wow_spec
+        =f.text_field :wow_spec
+
+    %div.row
+      %div.col.s12
+        %h5 Questionz
+        %div.col.s12
+          =f.label :q_1
+          =f.text_area :q_1
+
+        %div.col.s12
+          =f.label :q_2
+          =f.text_area :q_2
+
+        %div.col.s12
+          =f.label :q_3
+          =f.text_area :q_3
+
+        %div.col.s12
+          =f.label :q_4
+          =f.text_area :q_4
+
+        %div.col.s12
+          =f.label :q_5
+          =f.text_area :q_5
+
+        %div.col.s12
+          =f.label :q_6
+          =f.text_area :q_6
+
+        %div.col.s12
+          =f.label :q_7
+          =f.text_area :q_7
+
+        %div.col.s12
+          =f.label :q_8
+          =f.text_area :q_8
+
+  %div.input_field.col.s12
+    =f.submit "Apply", class: "btn btn-primary"

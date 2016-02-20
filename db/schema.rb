@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216180812) do
+ActiveRecord::Schema.define(version: 20160217162344) do
+
+  create_table "guild_applications", force: :cascade do |t|
+    t.string   "wow_name",   limit: 255
+    t.string   "email",      limit: 255
+    t.integer  "status",     limit: 1,     default: 0
+    t.integer  "wow_region", limit: 1,     default: 0
+    t.string   "wow_server", limit: 255
+    t.integer  "wow_class",  limit: 1,     default: 0
+    t.string   "wow_spec",   limit: 255
+    t.string   "firstname",  limit: 255
+    t.string   "lastname",   limit: 255
+    t.string   "phone",      limit: 255
+    t.text     "q_1",        limit: 65535
+    t.text     "q_2",        limit: 65535
+    t.text     "q_3",        limit: 65535
+    t.text     "q_4",        limit: 65535
+    t.text     "q_5",        limit: 65535
+    t.text     "q_6",        limit: 65535
+    t.text     "q_7",        limit: 65535
+    t.text     "q_8",        limit: 65535
+    t.string   "raid_ui",    limit: 255
+    t.integer  "age",        limit: 4
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
   create_table "news", force: :cascade do |t|
     t.string   "title",       limit: 255

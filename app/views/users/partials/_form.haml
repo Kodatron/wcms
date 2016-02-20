@@ -15,6 +15,7 @@
       =f.password_field :password_confirmation
 
     =f.fields_for :profile do |profile|
+      =profile.hidden_field :avatar, value: ''
       %div.input_field.col.s6
         =profile.label :firstname
         =profile.text_field :firstname
@@ -34,4 +35,4 @@
         =profile.label :wow_region
         =profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
       %div.input_field.col.s12
-      =f.submit "Create User", class: "btn btn-primary"
+        =f.submit "Create User", class: "btn btn-primary"

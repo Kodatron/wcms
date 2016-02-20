@@ -1,0 +1,68 @@
+%div.container
+  %div.row
+    %div.col.s12
+      %div.card
+        %div.card-image
+          = image_tag('1293601.jpg')
+          -#= image_tag(render_thumbnail_url(@guild_application.wow_region, @stats['thumbnail']), width: "50%", class: 'circle')
+          %span.card-title= "#{@guild_application.wow_name} - #{@guild_application.created_at.to_date}"
+        %div.card-content
+          %h6= @stats['level']
+
+  %div.row
+    %div.col.s12
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Vad är din speltid på din huvudkaraktär och/eller betydelsefulla alts? (Ange gärna speltid på tidigare mains med. Ange även namn och server.)
+          %div.collapsible-body
+            %p= @guild_application.q_1
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Varför valde du att spela just den class och spec du spelar nu. Skulle du kunna tänka dig spela en annan class eller spec om vi känner att det är bättre för guildet?
+          %div.collapsible-body
+            %p= @guild_application.q_2
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Berätta lite om dig själv
+          %div.collapsible-body
+            %p= @guild_application.q_3
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Berätta om din raiderfarenhet. Har du ingen så berätta om andra gamingerfarenheter, må det vara WoW eller andra spel.
+          %div.collapsible-body
+            %p= @guild_application.q_4
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Berätta vad du söker i ett guild och varför du sökte just till Family Legion
+          %div.collapsible-body
+            %p= @guild_application.q_5
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Om du var medlem i andra Guilds, berätta för oss varför du lämnade?
+          %div.collapsible-body
+            %p= @guild_application.q_6
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Vad tycker du om progressraiding, raida för achivements och raida gammalt content?
+          %div.collapsible-body
+            %p= @guild_application.q_7
+
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header
+            %p Vi använder ett rotationsystem baserat på närvaro, vad tycker du om det??
+          %div.collapsible-body
+            %p= @guild_application.q_8

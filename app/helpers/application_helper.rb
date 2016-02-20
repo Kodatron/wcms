@@ -14,8 +14,8 @@ module ApplicationHelper
      "#{t(:Search_results_for, search: "<strong>#{search}</strong>")} #{link_to t(:Show_all), options.delete(:path)}".html_safe
   end
 
-  def icon(icon_name_postfix, hash={})
-    content_tag :span, nil, hash.merge(class: "material-icons add")
+  def render_thumbnail_url region, avatar
+    "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
 
   def render_thumbnail_url region, avatar

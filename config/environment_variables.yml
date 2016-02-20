@@ -1,6 +1,6 @@
 development:
   DB_HOST: 127.0.0.1
-  DB_PASS: skate2cr8
+  DB_PASS:
   DB_USERNAME: root
   DB_NAME: wcms_dev
   BLIZZ_KEY: t3pbznutdmmqv52waukaxu9ankgqq9ne

@@ -1,6 +1,13 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update, :destroy]
 
+  def show
+    @user = User.find(params[:name])
+    RBattlenet.authenticate(api_key: ENV['BLIZZ_KEY'])
+    RBattlenet.set_region(region: "eu", locale: "en_GB")
+    @userData = RBattlenet::Wow::Character.find(name: @user.name, realm: @user.profile.wow_server, fields: ["feed", "items", "progression", 'talents'])
+  end
+
   def edit
   end
 

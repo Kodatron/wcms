@@ -2,10 +2,14 @@ Rails.application.routes.draw do
   resources :profiles
   resources :users
   resources :pages
+  get 'sessions/new'
 
   root :to => "pages#index"
-
+  post   '/login'   => 'sessions#create'
+  get    '/login'   =>  'sessions#new'
+  delete '/logout'  => 'sessions#destroy'
   get 'about_us' => 'pages#about_us', as: :about
+  get 'dashboard' => 'pages#dashboard', as: :dashboard
 
   namespace :admin do
     get :index

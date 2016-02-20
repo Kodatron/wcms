@@ -18,4 +18,7 @@ module ApplicationHelper
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
 
+  def render_thumbnail_url region, avatar
+    "http://#{region}.battle.net/static-render/eu/#{avatar}"
+  end
 end

@@ -2,18 +2,13 @@
 %html
   %head
     %title
-
     = stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: true }
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_include_tag :application, data: { turbolinks_track: true }
     = csrf_meta_tags
 
-  %body
-    %div.container
-      %div.blankslate.clean-background
-        %h3 Welcome to WCMS
-        %p WCMS is the most powerful tool for guilds, ever!
-
-      = render partial: 'layouts/partials/menu'
-    %div.container
+  %body.community-background
+    = render partial: 'layouts/partials/main_menu'
+    %div.container.main-wrapper.dark-sh-well
       = yield
-      = render partial: 'layouts/partials/footer'
+    = render partial: 'layouts/partials/footer'

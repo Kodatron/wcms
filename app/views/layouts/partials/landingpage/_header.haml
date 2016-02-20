@@ -24,11 +24,3 @@
         %li= link_to t(:Progress),"#"
         %li= link_to t(:Apply), "#"
         %li= link_to t(:Login), "#modal-login", class: "modal-trigger"
-
-%div#modal-login.modal
-  %div.modal-content
-    %form.col.s12
-      %div.row
-        %div.input-field.col.s12
-          %input{id: "email", type: "email", class: "validate"}
-          %label{for: "email"}=t(:Email)

@@ -1,0 +1,42 @@
+%div.row
+  %div.col.s12.m8
+    %h4.thin In the air
+    %ol.activity-feed
+      %li.feed-item
+        %div.feed-box
+          %div.portrait.col.s3
+            =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "circle")
+            %span{ :class => current_user.profile.wow_class}
+              =current_user.name
+          %span.text
+            Responded to thread
+            =link_to "Recruitment of druids", "#"
+            in the druid forums
+          %div.feed-bar
+            %ul.list-inline
+              %li
+                0 Comments
+              %li
+                4 Likes
+      %li.feed-item
+        %div.feed-box
+          %div.portrait.col.s3
+            =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "circle")
+            %span{ :class => current_user.profile.wow_class}
+              =current_user.name
+          %span.text
+            Responded to thread
+            =link_to "Recruitment of druids", "#"
+            in the druid forums
+      %li.feed-item
+        %div.feed-box
+          %div.portrait.col.s3
+            =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "circle")
+            %span{ :class => current_user.profile.wow_class}
+              =current_user.name
+          %span.text
+            Responded to thread
+            =link_to "Recruitment of druids", "#"
+            in the druid forums
+
+  %div.col.s12.m4

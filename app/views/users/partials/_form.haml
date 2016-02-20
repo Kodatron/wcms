@@ -1,13 +1,6 @@
 %div.row
   =form_for(@user) do |f|
-    =if @user.errors.any?
-      %div.error_explanation
-        %h2
-          =pluralize(@user.errors.count, "error")
-          prohibited this user from being saved:
-        %ul
-          =@user.errors.full_messages.each do |message|
-            %li message
+    = render 'shared/form_errors', target: @user
     %div.input_field.col.s6
       =f.label :name
       =f.text_field :name
@@ -36,11 +29,10 @@
         =profile.label  :wow_server
         =profile.text_field :wow_server
       %div.input_field.col.s6
-        =profile.label :wow_region
-        =profile.select(:wow_region, GuildApplication.wow_regions.keys.map {|w| [w.titleize,w]})
-
-      %div.input_field.col.s6
         =profile.label :wow_class
-        =profile.select(:wow_class, GuildApplication.wow_classes.keys.map {|w| [w.titleize, w]})
+        =profile.select :wow_class,  Profile.wow_classes.keys.to_a.map { |w| [w.humanize, w]}
+      %div.input_field.col.s6
+        =profile.label :wow_region
+        =profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
       %div.input_field.col.s12
         =f.submit "Create User", class: "btn btn-primary"

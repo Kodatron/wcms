@@ -1,7 +1,10 @@
 %div.navbar-fixed
   %nav
     %div.nav-wrapper.nav-container
-      = link_to image_tag("logos/logo.png", :border => 0), root_path, class: "brand-logo center"
+      - if current_user
+        = link_to image_tag("logos/logo.png", :border => 0), dashboard_path, class: "brand-logo center"
+      - else
+        = link_to image_tag("logos/logo.png", :border => 0), root_path, class: "brand-logo center"
       = link_to  "#", "data-activates" => "mobile-nav", class: "button-collapse" do
         %i.material-icons menu
 
@@ -11,7 +14,7 @@
         %li= link_to t(:Progress), "#"
       %ul.right.hide-on-med-and-down
         %li= link_to t(:Apply), new_guild_application_path
-        %li= link_to t(:Login), "#modal-login", class: "modal-trigger"
+        %li= link_to t(:Login), login_path
         %li
           =link_to t(:Language), "#!",  class: 'dropdown-button', "data-activates" => "dropdown1"
           %ul#dropdown1.dropdown-content

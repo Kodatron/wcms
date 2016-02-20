@@ -1,7 +1,10 @@
 %div.navbar-fixed
   %nav
     %div.nav-wrapper.nav-container
-      = link_to image_tag("logos/logo.png", :border => 0), root_path, class: "brand-logo center"
+      - if current_user
+        = link_to image_tag("logos/logo.png", :border => 0), dashboard_path, class: "brand-logo center"
+      - else
+        = link_to image_tag("logos/logo.png", :border => 0), root_path, class: "brand-logo center"
       = link_to  "#", "data-activates" => "mobile-nav", class: "button-collapse" do
         %i.material-icons menu
 
@@ -26,7 +29,8 @@
 %ul#profile-dropdown.dropdown-content
   %li=link_to t(:Profile), "#"
   %li=link_to t(:Settings), "#"
+  %li=link_to t(:Home), "/"
   %li.divider
-  %li=link_to t(:Admin), "#"
+  %li=link_to t(:Admin), admin_index_path
   %li.divider
   %li=link_to t(:Logout), logout_path, method: "delete"

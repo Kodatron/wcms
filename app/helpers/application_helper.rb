@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def init_api
+    @wow ||= WCMS::WowApi.new
+    @wow
+  end
+
   def load_navbar
     if params[:controller] == 'admin'
       begin
@@ -18,7 +23,8 @@ module ApplicationHelper
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
 
-  def render_thumbnail_url region, avatar
+  def render_avatar_url region, avatar
+    avatar = avatar.sub! 'avatar', 'profile'
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
 end

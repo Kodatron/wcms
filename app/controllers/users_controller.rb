@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'layouts/landingpage'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  #helper WowApi
   def index
     @users = User.all
   end
@@ -45,10 +45,8 @@ class UsersController < ApplicationController
     def init_character_avatar user
       name = user['name']
       realm = user['profile_attributes']['wow_server']
-      RBattlenet.authenticate(api_key: ENV['BLIZZ_KEY'])
-      RBattlenet.set_region(region: "eu", locale: "en_GB")
-      character = RBattlenet::Wow::Character.find(name: name, realm: realm)
-      character['thumbnail']
+      thumbnail = WowApi.new
+      thumbnail.get_character_avatar(realm, name)
     end
 
     def set_user

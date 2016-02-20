@@ -22,6 +22,7 @@
       =f.password_field :password_confirmation
 
     =f.fields_for :profile do |profile|
+      =profile.hidden_field :avatar, value: ''
       %div.input_field.col.s6
         =profile.label :firstname
         =profile.text_field :firstname
@@ -35,10 +36,11 @@
         =profile.label  :wow_server
         =profile.text_field :wow_server
       %div.input_field.col.s6
-        =profile.label :wow_class
-        =select_tag(:wow_class, options_for_select([["Death Knight", "death_knight"],["Druid", "druid"],["Hunter", "hunter"],["Warlock", "warlock"],["Mage", "mage"], ["Paladin", "paladin"], ["Shaman", "shaman"], ["Warrior", "warrior"],["Priest", "priest"], ["Monk", "monk"], ["Rogue", "rogue"],["Demon Hunter", "demon_hunter"]]))
-      %div.input_field.col.s6
         =profile.label :wow_region
-        =select_tag(:wow_region, options_for_select([["Europe", "eu"], ["North America", "us"], ["Korea", "kr"], ["Taiwan", "tw"], ["South Eas Asia", "sea"]]))
+        =profile.select(:wow_region, GuildApplication.wow_regions.keys.map {|w| [w.titleize,w]})
+
+      %div.input_field.col.s6
+        =profile.label :wow_class
+        =profile.select(:wow_class, GuildApplication.wow_classes.keys.map {|w| [w.titleize, w]})
       %div.input_field.col.s12
-      =f.submit "Create User", class: "btn btn-primary"
+        =f.submit "Create User", class: "btn btn-primary"

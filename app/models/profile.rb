@@ -1,4 +1,3 @@
-require 'battlenet'
 class Profile < ActiveRecord::Base
   after_create :init_character_avatar
   validates :firstname, presence: true

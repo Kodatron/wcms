@@ -12,8 +12,16 @@
         %li=link_to t(:Guild), "#"
         %li=link_to t(:Media), "#"
       %ul.right.hide-on-med-and-down
-        =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "img-nav border-img circle")
-        =link_to current_user.name, "#", class: "dropdown-button", 'data-activates' => 'profile-dropdown'
+        %li
+          =link_to "#", class: "" do
+            %i.material-icons chat
+        %li
+          =link_to "#", class: "" do
+            %i.material-icons notifications
+        %li
+          =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "img-nav  circle")
+        %li
+          =link_to current_user.name, "#", class: "dropdown-button wow #{current_user.profile.wow_class}", 'data-activates' => 'profile-dropdown'
 
 %ul#profile-dropdown.dropdown-content
   %li=link_to t(:Profile), "#"

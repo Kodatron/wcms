@@ -13,9 +13,9 @@
   margin-top: 10px;
 }
 .img-nav{
-    width: 40px;
-    height: 40px;
-    margin-top: 6px;
+    width: 50px;
+    height: 50px;
+    margin-top: 16px;
 }
 .border-img {
     border: 2px solid #000000;
@@ -27,6 +27,95 @@
   .brand-logo{
     img{
         height: 55px;
+    }
+  }
+}
+
+/**** MAIN COMMUNITY STYLES ***/
+.main-wrapper {
+  margin-top: 35px;
+}
+.community-background {
+  background: image-url('backgrounds/bg.jpg') no-repeat center center fixed;
+  @include background-size(cover);
+}
+
+.dark-sh-well {
+    background: #111111;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    border-radius: 4px;
+    border-color: #111111;
+    -moz-box-shadow: 0 0 5px #000;
+    -webkit-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+}
+.activity-feed {
+  padding: 15px;
+  list-style: none;
+
+  .feed-item {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    border-left: 2px solid $secondary-color;
+
+    &:last-child {
+      border-color: transparent;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 6px;
+      background: #111111;
+      border: 1px solid $secondary-color;
+    }
+    .feed-box{
+      //@extend .dark-sh-well;
+      padding: 10px;
+      //background: $black;
+      .portrait{
+        text-align: center;
+        img {
+        width:40px;
+        height: 40px;
+        }
+      }
+      .date {
+        display: block;
+        position: relative;
+        top: -5px;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+      .text {
+        position: relative;
+        top: 10px;
+      }
+      .feed-bar{
+        margin-top: 10px;
+        padding: inherit;
+
+        .list-inline{
+          list-style: none;
+
+          li{
+            display: inline;
+            font-size: 12px;
+            margin-left: 10px;
+          }
+        &:first-child{
+          margin-left: 0px;
+          }
+        }
+      }
     }
   }
 }

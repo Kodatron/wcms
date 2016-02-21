@@ -8,7 +8,8 @@
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all'
     = csrf_meta_tags
 
-  %body
+  %body.community-background
     = render partial: '/layouts/partials/landingpage/header'
-    = yield
+    .main-wrapper
+      = yield
     = render partial: '/layouts/partials/landingpage/footer'

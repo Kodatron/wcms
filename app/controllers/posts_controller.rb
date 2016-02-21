@@ -3,21 +3,26 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :increase_views, only: :show
   before_filter :check_admin, only: [:new, :edit, :update, :create, :destroy]
+  before_action :login_required, except: [:index, :show]
 
   def index
     @posts = Post.published.by_date
+    if current_user
+      render layout: 'layouts/application'
+    else
+      render layout: 'layouts/landingpage'
+    end
   end
 
   def show
+    render layout: 'layouts/landingpage'
   end
 
   def new
     @post = Post.new
-    render layout: 'layouts/landingpage'
   end
 
   def edit
-    render layout: 'layouts/landingpage'
   end
 
   def create

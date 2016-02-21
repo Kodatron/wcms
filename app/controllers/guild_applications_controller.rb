@@ -1,7 +1,7 @@
 class GuildApplicationsController < ApplicationController
   require 'securerandom'
   layout 'layouts/admin'
-  before_action :check_admin, except: [:new]
+  before_action :check_admin, except: [:new, :create]
   before_action :set_guild_application, only: [:show, :edit, :update, :destroy]
   before_action :init_wow_api
 

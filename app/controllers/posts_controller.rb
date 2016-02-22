@@ -44,12 +44,16 @@ class PostsController < ApplicationController
 
   def change_status
     @post = Post.find(params[:post_id])
-    if @post.draft?
-      @post.published!
+
+    @interactor = ChangeStatus.call(
+      document: @post,
+      status: params[:status]
+    )
+    unless @interactor.success?
+      redirect_to admin_blog_path, alert: "Something went wrong.."
     else
-      @post.draft!
+      redirect_to admin_blog_path, notice: "Status has been updated!"
     end
-    redirect_to admin_blog_path, notice: "Status has been updated!"
   end
 
   def destroy

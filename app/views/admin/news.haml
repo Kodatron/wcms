@@ -15,7 +15,7 @@
           - @news.each do |n|
             %tr
               %td= link_to n.title, news_path(n)
-              %td= link_to n.status.capitalize, news_change_status_path(news_id: n.id), data: {confirm: 'Are you sure?'}
+              %td= link_to n.status.capitalize, news_change_status_path(news_id: n.id, status: n.draft? ? :published : :draft), data: {confirm: 'Are you sure?'}
               %td= n.permissions
               %td= n.views
               %td= n.created_at.to_date

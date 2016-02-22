@@ -45,12 +45,16 @@ class NewsController < ApplicationController
 
   def change_status
     @news = News.find(params[:news_id])
-    if @news.draft?
-      @news.published!
+
+    @interactor = ChangeStatus.call(
+      document: @news,
+      status: params[:status]
+    )
+    unless @interactor.success?
+      redirect_to admin_news_path, alert: "Something went wrong.."
     else
-      @news.draft!
+      redirect_to admin_news_path, notice: "Status has been updated!"
     end
-    redirect_to admin_news_path, notice: "Status has been updated!"
   end
 
   private

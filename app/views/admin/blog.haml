@@ -16,7 +16,7 @@
             %tr
               %td= link_to post.title, post_path(post)
               %td
-                = link_to post.status.capitalize, post_change_status_path(post_id: post.id), data: {confirm: 'Are you sure?'}
+                = link_to post.status.capitalize, post_change_status_path(post_id: post.id, status: post.draft? ? :published : :draft), data: {confirm: 'Are you sure?'}
               %td= post.views
               %td= post.published_at.to_date
               %td= post.created_at.to_date

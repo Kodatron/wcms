@@ -1,7 +1,7 @@
 class ChangeStatus
-  include Interactor::Organizer
+  include Interactor
 
   def call
-    context[:document].update_attributes(status: context[:status])
+    context[:document].update_attributes!(status: context[:status])
   end
 end

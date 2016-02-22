@@ -20,8 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :guild_applications do
-    post :approve
-    post :decline
+    post :approve_or_decline
   end
 
   resources :news do

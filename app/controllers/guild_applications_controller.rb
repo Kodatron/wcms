@@ -14,19 +14,19 @@ class GuildApplicationsController < ApplicationController
     render layout: 'layouts/landingpage'
   end
 
-  def approve
+  def approve_or_decline
     @guild_application = GuildApplication.find(params[:guild_application_id])
-    if @guild_application.approved!
-      create_user_and_profile_from_application(@guild_application, params[:reason])
-      redirect_to admin_applications_path
-    end
-  end
-
-  def decline
-    @guild_application = GuildApplication.find(params[:guild_application_id])
-    if @guild_application.declined!
-      UserMailer.declined_application_email(@guild_application, params[:reason], current_user).deliver_now
-      redirect_to admin_applications_path
+    @interactor = HandleGuildApplication.call(
+      document: @guild_application,
+      status: params[:status].to_sym,
+      reason: params[:reason],
+      avatar: init_character_avatar(@guild_application.wow_name, @guild_application.wow_server),
+      admin: current_user
+    )
+    unless @interactor.success?
+      redirect_to admin_applications_path, alert: "Something went wrong.."
+    else
+      redirect_to admin_applications_path, notice: "Guild application approved!"
     end
   end
 
@@ -66,15 +66,6 @@ class GuildApplicationsController < ApplicationController
       format.html { redirect_to guild_applications_url, notice: 'Guild application was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def create_user_and_profile_from_application(ga, reason)
-    password = SecureRandom.hex(8)
-    @user = User.new(name: ga.wow_name, email: ga.email, password: password)
-    @user.save!
-    @profile = Profile.new(user_id: @user.id, wow_server: ga.wow_server, wow_region: ga.wow_region, wow_class: ga.wow_class, firstname: ga.firstname, lastname: ga.lastname, phone: ga.phone, avatar: init_character_avatar(ga.wow_name, ga.wow_server))
-    @profile.save!
-    UserMailer.approved_application_email(@user, password, reason, current_user).deliver_now
   end
 
   private

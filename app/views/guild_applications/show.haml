@@ -5,8 +5,7 @@
         %li
           %div.collapsible-header Godkänn
           %div.collapsible-body
-            = form_tag guild_application_approve_path(guild_application_id: @guild_application.id), method: :post do
-              = hidden_field_tag :guild_application_id, value: @guild_application.id
+            = form_tag guild_application_approve_or_decline_path(guild_application_id: @guild_application.id, status: :approved), method: :post do
               = text_field_tag :reason
               = submit_tag "Approve"
     %div.col.s6
@@ -14,8 +13,7 @@
         %li
           %div.collapsible-header Neka
           %div.collapsible-body
-            = form_tag guild_application_decline_path(guild_application_id: @guild_application.id), method: :post do
-              = hidden_field_tag :guild_application_id, value: @guild_application.id
+            = form_tag guild_application_approve_or_decline_path(guild_application_id: @guild_application.id, status: :declined), method: :post do
               = text_field_tag :reason
               = submit_tag "Decline"
   %div.row

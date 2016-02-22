@@ -26,7 +26,7 @@ class GuildApplicationsController < ApplicationController
     unless @interactor.success?
       redirect_to admin_applications_path, alert: "Something went wrong.."
     else
-      redirect_to admin_applications_path, notice: "Guild application approved!"
+      redirect_to admin_applications_path, notice: "Guild application #{params[:status]}!"
     end
   end
 

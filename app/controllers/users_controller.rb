@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  layout 'layouts/landingpage'
+  layout 'layouts/admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #helper WowApi
   def index
     @users = User.all
   end

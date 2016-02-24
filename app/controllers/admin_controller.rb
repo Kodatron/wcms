@@ -4,6 +4,7 @@ class AdminController < ApplicationController
 
   def index
     @applications = GuildApplication.pending.count
+    @requests = AltRequest.pending.count
   end
 
   def blog
@@ -40,6 +41,11 @@ class AdminController < ApplicationController
   def applications
     @applications = GuildApplication.pending
     @applications = paginate(@applications)
+  end
+
+  def alt_requests
+    @alt_requests = AltRequest.pending
+    @alt_requests = paginate(@alt_requests)
   end
 
   private

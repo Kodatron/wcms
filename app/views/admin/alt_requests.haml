@@ -1,0 +1,18 @@
+%div.container
+  %div.row
+    %div.col.s12
+      %table.striped
+        %thead
+          %th= t(:Current_main)
+          %th= t(:Requested_main)
+          %th= t(:Created_at)
+          %th
+        %tbody
+          - @alt_requests.each do |alt|
+            %tr
+              %td= link_to alt.user.name, alt_request_path(alt)
+              %td= alt.alt.wow_name
+              %td= alt.created_at.to_date
+  %div.row
+    %div.col.s12.pagination
+      = paginate(@alt_requests)

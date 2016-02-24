@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :users
   resources :pages
+
   get 'sessions/new'
 
   root :to => "pages#index"
@@ -18,6 +19,11 @@ Rails.application.routes.draw do
     get :news
     get :users
     get :applications
+    get :alt_requests
+  end
+
+  resources :alt_requests do
+    post :approve_or_decline
   end
 
   resources :guild_applications do

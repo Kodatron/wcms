@@ -1,0 +1,21 @@
+.container
+  .row.dark-sh-well
+    .col.s12
+      = @alt_request.inspect
+
+    %div.col.s6
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header Godkänn
+          %div.collapsible-body
+            = form_tag alt_request_approve_or_decline_path(alt_request_id: @alt_request.id, status: :approved) do
+              = text_field_tag :reason
+              = submit_tag "Approve"
+    %div.col.s6
+      %ul.collapsible{"data-collapsible" => "accordion"}
+        %li
+          %div.collapsible-header Neka
+          %div.collapsible-body
+            = form_tag alt_request_approve_or_decline_path(alt_request_id: @alt_request.id, status: :declined) do
+              = text_field_tag :reason
+              = submit_tag "Decline"

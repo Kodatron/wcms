@@ -32,9 +32,9 @@
         %div.card.blue-grey.darken-1
           %div.card-content.white-text
             %span.card-title Alt requests
-            %p You have 5 pending alt requests
+            %p= "You have #{@requests} pending alt requests"
           %div.card-action
-            = link_to "See requests", "#"
+            = link_to "See requests", admin_alt_requests_path
 
 
       %div.col.s6

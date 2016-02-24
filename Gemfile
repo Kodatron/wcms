@@ -14,6 +14,7 @@ gem 'kaminari'
 gem 'figaro'
 gem 'rbattlenet'
 gem 'bcrypt'
+gem 'gretel'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

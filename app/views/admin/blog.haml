@@ -1,4 +1,8 @@
-%div.container
+-breadcrumb :posts
+%div.container.black-text
+  .row
+    .col.s12
+      = render partial: "/admin/navbar/navbar.blog"
   %div.row
     %div.col.s12
       - if @search
@@ -11,18 +15,22 @@
           %th= t(:Published)
           %th= t(:Created_at)
           %th
+          %th
         %tbody
           - @posts.each do |post|
             %tr
-              %td= link_to post.title, post_path(post)
+              %td= link_to post.title, post_path(post), class: "black-text"
               %td
-                = link_to post.status.capitalize, post_change_status_path(post_id: post.id), data: {confirm: 'Are you sure?'}
+                = link_to post.status.capitalize, post_change_status_path(post_id: post.id),class: "draft" == post.status ? "amber-text text-accent-4" : "green-text"  , data: {confirm: 'Are you sure?'}
               %td= post.views
               %td= post.published_at.to_date
               %td= post.created_at.to_date
               %td
-                = link_to t(:Edit), edit_post_path(post)
-                = link_to t(:Delete), post_path(post), method: :delete, data: {confirm: 'Are you sure?'}
-  %div.row
-    %div.col.s12.pagination
-      = paginate(@posts)
+                = link_to edit_post_path(post) do
+                  %i.material-icons.left.purple-text.text-darken-2 create
+              %td
+                = link_to post_path(post), method: :delete, data: {confirm: 'Are you sure?'} do
+                  %i.material-icons.red-text remove_circle
+    %div.row
+      %div.col.s12.center-align
+        = paginate(@posts)

@@ -1,6 +1,6 @@
 = form_for @post do |post|
   %div.row
-    %div.col.s12
+    %div.col.s12.black-text
       %h5= t(:Blog)
 
       = render 'shared/form_errors', target: @post
@@ -14,7 +14,7 @@
         = post.text_area :body, class: 'materialize-textarea'
 
       %div.input-field.col.s6
-        = post.label :published_at
+        %p=t(:Published_at)
         = post.date_field :published_at, class: 'datepicker'
   %div.row
     %div.col.s12

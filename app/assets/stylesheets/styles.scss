@@ -119,3 +119,39 @@
     }
   }
 }
+
+/****** ADMIN PANEL ***/
+.admin-card-title {
+  font-size: 3em;
+  font-weight: 700;
+  &.activator {
+    cursor: pointer;
+  }
+}
+.admin-card-action{
+  border-top: 1px solid rgba(160,160,160,.2);
+  padding: $card-padding;
+
+  a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: #fff;
+    margin-right: $card-padding;
+    transition: color .3s ease;
+    text-transform: uppercase;
+
+    &:hover { color: #fff; }
+  }
+}
+/*** Breadcrumbs ***/
+.admin-crumbs{
+  margin-top: 20px;
+  width: 100%;
+  font-size: 18px;
+}
+/**** Buttons ****/
+
+/***** Pagination **/
+.pagination{
+    li.active{
+      background-color: $secondary-color;
+  }
+}

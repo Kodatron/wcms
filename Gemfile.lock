@@ -57,6 +57,8 @@ GEM
       thor (~> 0.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gretel (3.0.8)
+      rails (>= 3.2.0)
     haml (4.0.7)
       tilt
     httparty (0.13.7)
@@ -162,6 +164,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   figaro
+  gretel
   haml
   jbuilder (~> 2.0)
   jquery-rails

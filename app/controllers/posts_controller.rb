@@ -13,11 +13,9 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    render layout: 'layouts/landingpage'
   end
 
   def edit
-    render layout: 'layouts/landingpage'
   end
 
   def create

@@ -1,9 +1,6 @@
-%div.container
-  %div.row
-    %p
-    %div.col.s6
-      = link_to t(:Create), new_post_path, class: 'waves-effect waves-light btn'
-      = link_to t(:Visit_blog), posts_path, class: 'waves-effect waves-light btn'
-    %div.col.s6
-      = form_tag admin_blog_path, method: :get do
-        = text_field_tag :term, @search, size: 32, placeholder: t(:Search), class: 's8'
+.col.s6
+  = link_to t(:Create), new_post_path, class: 'btn admin-create'
+  = link_to t(:Visit_blog), posts_path, class: 'waves-effect waves-light btn'
+.col.s6
+  = form_tag admin_blog_path, method: :get do
+    = text_field_tag :term, @search, size: 32, placeholder: t(:Search), class: 's8'

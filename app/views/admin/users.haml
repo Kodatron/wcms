@@ -1,4 +1,8 @@
-%div.container
+-breadcrumb :users
+%div.container.black-text
+  .row
+    .col.s12
+      =render partial: 'admin/navbar/navbar.users'
   %div.row
     %div.col.s12
       - if @search
@@ -7,15 +11,21 @@
         %thead
           %th= t(:Namn)
           %th= t(:Class)
+          %th= t(:Email)
+          %th
           %th
         %tbody
           - @users.each do |user|
             %tr
-              %td= user.name
+              %td= user.name.capitalize
               %td= user.profile.wow_class.capitalize.humanize
+              %td= user.email
               %td
-                = link_to t(:Edit), edit_user_path(user)
-                = link_to t(:Delete), user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to edit_user_path(user) do
+                  %i.material-icons.left.purple-text.text-darken-2 create
+              %td
+                = link_to user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do
+                  %i.material-icons.red-text remove_circle
   %div.row
-    %div.col.s12.pagination
+    %div.col.s12.center-align
       = paginate(@users)

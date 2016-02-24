@@ -1,0 +1,19 @@
+= form_for(@alt) do |f|
+  =f.hidden_field :avatar, value: ''
+  %div.input_field.col.s6
+    =f.label :wow_name
+    =f.text_field :wow_name
+  %div.input_field.col.s6
+    =f.label :wow_class
+    =f.select :wow_class,  Alt.wow_classes.keys.to_a.map { |w| [w.humanize, w]}
+  %div.input_field.col.s6
+    =f.label :wow_spec
+    =f.text_field :wow_spec
+  %div.input_field.col.s6
+    =f.label  :wow_server
+    =f.text_field :wow_server
+  %div.input_field.col.s6
+    =f.label :wow_region
+    =f.select :wow_region, Alt.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
+  %div.input_field.col.s12
+    =f.submit "Add alt", class: "btn btn-primary"

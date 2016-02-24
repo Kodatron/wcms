@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'layouts/landingpage'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #helper WowApi
+  before_action :init_api, only: [:create]
   def index
     @users = User.all
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def create
     password = user_params[:password]
     @user = User.new(user_params)
-    @user.profile['avatar'] = init_character_avatar(user_params)
+    @user.profile['avatar'] = @wow.get_character_avatar(@user.profile["wow_server"], @user.name)
     if @user.save
       UserMailer.new_user_email(@user, current_user, password).deliver_now
       redirect_to @user, notice: 'User was successfully created.'
@@ -43,14 +43,6 @@ class UsersController < ApplicationController
   end
 
   private
-    # TODO: Move to api-module
-    def init_character_avatar user
-      name = user['name']
-      realm = user['profile_attributes']['wow_server']
-      thumbnail = WowApi.new
-      thumbnail.get_character_avatar(realm, name)
-    end
-
     def set_user
       @user = User.find(params[:id])
     end

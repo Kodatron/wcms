@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220172301) do
+ActiveRecord::Schema.define(version: 20160224161614) do
+
+  create_table "alts", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "wow_name",   limit: 255
+    t.integer  "wow_class",  limit: 1,   default: 0
+    t.integer  "wow_region", limit: 1,   default: 0
+    t.string   "wow_server", limit: 255
+    t.string   "wow_spec",   limit: 255
+    t.string   "avatar",     limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   create_table "guild_applications", force: :cascade do |t|
     t.string   "wow_name",   limit: 255

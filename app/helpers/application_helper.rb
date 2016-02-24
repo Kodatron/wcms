@@ -1,10 +1,5 @@
 module ApplicationHelper
-
-  def init_api
-    @wow ||= WCMS::WowApi.new
-    @wow
-  end
-
+  
   def load_navbar
     if params[:controller] == 'admin'
       begin

@@ -5,7 +5,7 @@ class CreateAlts < ActiveRecord::Migration
       t.string :wow_name
       t.integer :wow_class, limit: 1, default: 0
       t.integer :wow_region, limit: 1, default: 0
-      t.integer :wow_server, limit: 1, default: 0
+      t.string :wow_server
       t.string :wow_spec
       t.string :avatar
       t.timestamps null: false

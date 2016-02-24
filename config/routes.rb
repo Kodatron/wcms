@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :alts
   resources :profiles
   resources :users
   resources :pages

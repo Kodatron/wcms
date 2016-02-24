@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
   layout 'layouts/landingpage'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :init_api, only: [:create, :show]
+  before_action :init_api, only: [:create]
   def index
     @users = User.all
   end
 
   def show
-    raise @wow.get_character_avatar(@user.profile.wow_server, @user.name).inspect
   end
 
   def new

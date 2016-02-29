@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  layout 'layouts/landingpage'
+  layout 'layouts/admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  #helper WowApi
   def index
     @users = User.all
   end
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
     @user.profile['avatar'] = init_character_avatar(user_params)
     if @user.save
       UserMailer.new_user_email(@user, current_user, password).deliver_now
-      redirect_to @user, notice: 'User was successfully created.'
+      redirect_to @user, notice: "#{@user.name} was successfully created."
     else
       render status: 402, action: :new
     end
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, notice: "#{@user.name} was successfully updated."
     else
       render status: 402, action: :edit
     end
@@ -39,7 +38,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path, notice: 'User was successfully destroyed.'
+    flash['warning'] = "#{@user.name} was permanently removed."
+    redirect_to admin_users_path
   end
 
   private

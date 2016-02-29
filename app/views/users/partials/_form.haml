@@ -1,4 +1,4 @@
-%div.row
+%div.row.black-text
   =form_for(@user) do |f|
     = render 'shared/form_errors', target: @user
     %div.input_field.col.s6
@@ -35,4 +35,4 @@
         =profile.label :wow_region
         =profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
       %div.input_field.col.s12
-        =f.submit "Create User", class: "btn btn-primary"
+        =f.submit "Save", class: "btn btn-primary"

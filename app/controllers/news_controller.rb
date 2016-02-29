@@ -23,7 +23,7 @@ class NewsController < ApplicationController
   def create
     @news = News.new(news_params)
     if @news.save
-      redirect_to admin_news_path, notice: 'News was successfully created.'
+      redirect_to admin_news_path, notice: "#{@news.title} was successfully created."
     else
       render status: 402, action: :new
     end
@@ -31,7 +31,7 @@ class NewsController < ApplicationController
 
   def update
     if @news.update(news_params)
-      redirect_to admin_news_path, notice: 'News was successfully updated.'
+      redirect_to admin_news_path, notice: "You have successfully updated #{@news.title} ."
     else
       render status: 402, action: :edit
     end
@@ -39,7 +39,8 @@ class NewsController < ApplicationController
 
   def destroy
     if @news.destroy
-      redirect_to admin_news_path, notice: 'News was successfully destroyed.'
+      flash[:warning] = "You have destroyed #{@news.title}."
+      redirect_to admin_news_path
     end
   end
 
@@ -55,6 +56,7 @@ class NewsController < ApplicationController
     else
       redirect_to admin_news_path, notice: "Status has been updated!"
     end
+    redirect_to admin_news_path, notice: "Status has been updated to #{@news.status.capitalize}"
   end
 
   private

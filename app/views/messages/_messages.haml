@@ -1,0 +1,18 @@
+-if flash[:notice]
+  - message = flash[:notice]
+  :javascript
+    Materialize.toast(
+    "#{message}"
+    , 4000, 'green')
+-if flash[:warning]
+  - message = flash[:warning]
+  :javascript
+    Materialize.toast(
+    "#{message}"
+    , 4000, 'red')
+-if flash[:neutral]
+  - message = flash[:neutral]
+  :javascript
+    Materialize.toast(
+    "#{message}"
+    , 4000, 'blue')

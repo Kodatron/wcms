@@ -6,8 +6,19 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
 
   def check_admin
-    return true
-    redirect_to "/", alert: "Du måste vara inloggad för detta."
+    if current_user && logged_in?
+      true
+    else
+      redirect_to "/", alert: "Du måste vara inloggad för detta."
+    end
+  end
+
+  def login_required
+    if current_user && logged_in?
+      true
+    else
+      redirect_to login_path, alert: "Du måste vara inloggad för detta."
+    end
   end
 
   def set_locale

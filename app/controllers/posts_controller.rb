@@ -3,12 +3,19 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :increase_views, only: :show
   before_filter :check_admin, only: [:new, :edit, :update, :create, :destroy]
+  before_action :login_required, except: [:index, :show]
 
   def index
     @posts = Post.published.by_date
+    if current_user
+      render layout: 'layouts/application'
+    else
+      render layout: 'layouts/landingpage'
+    end
   end
 
   def show
+    render layout: 'layouts/landingpage'
   end
 
   def new
@@ -38,10 +45,15 @@ class PostsController < ApplicationController
 
   def change_status
     @post = Post.find(params[:post_id])
-    if @post.draft?
-      @post.published!
+
+    @interactor = ChangeStatus.call(
+      document: @post,
+      status: params[:status]
+    )
+    unless @interactor.success?
+      redirect_to admin_blog_path, alert: "Something went wrong.."
     else
-      @post.draft!
+      redirect_to admin_blog_path, notice: "Status has been updated!"
     end
     flash[:neutral] = "Status has been changed to #{@post.status}"
     redirect_to admin_blog_path

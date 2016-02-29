@@ -1,15 +1,16 @@
-%div.container
-  %div.row
-    %div.col.16
-      %h4= t(:Blog)
-
-  %div.row
-    %div.col.16.section
+%div.row
+  %div.col.s12
+    %div.col.s9
       - @posts.each do |post|
-        %h5= link_to post.title, post_path(post)
-        %small= "#{t(:Published_at)}: #{post.published_at.to_date} | #{t(:Views)}: #{post.views}"
+        %div.col.s12.dark-sh-well
+          %h4.thin= post.title
+          %p.thin= "#{t(:Published_at)}: #{post.published_at.to_date} | #{t(:Views)}: #{post.views}"
 
-        %p
-          = truncate(post.body, length: 200)
-          = link_to t(:Read_more), post_path(post)
-        %div.divider
+          %p.thin.blog-text
+            = truncate(post.body, length: 400)
+            = link_to t(:Read_more), post_path(post)
+    %div.col.s3.dark-sh-well
+      %h5.thin Mer nyheter
+      - @posts.each do |post|
+        %p= post.title
+        %p.thin= truncate(post.body, length: 80 )

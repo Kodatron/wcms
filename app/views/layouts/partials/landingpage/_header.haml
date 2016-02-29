@@ -10,16 +10,32 @@
 
       %ul.left.hide-on-med-and-down
         %li= link_to t(:About_us), about_path
-        %li= link_to t(:Blog), "#"
+        %li= link_to t(:Blog), posts_path
         %li= link_to t(:Progress), "#"
       %ul.right.hide-on-med-and-down
-        %li= link_to t(:Apply), new_guild_application_path
-        %li= link_to t(:Login), login_path
-        %li
-          =link_to t(:Language), "#!",  class: 'dropdown-button', "data-activates" => "dropdown1"
-          %ul#dropdown1.dropdown-content
-            %li= link_to t(:English), params.merge(locale: "en")
-            %li= link_to t(:Swedish), params.merge(locale: "sv")
+        - if current_user
+          %li
+            =link_to "#", class: "" do
+              %i.material-icons chat
+          %li
+            =link_to "#", class: "" do
+              %i.material-icons notifications
+          %li
+            = link_to dashboard_path, class: "" do
+              %i.material-icons developer_board
+          %li
+            =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "img-nav  circle")
+          %li
+            =link_to current_user.name, "#", class: "dropdown-button wow #{current_user.profile.wow_class}", 'data-activates' => 'profile-dropdown'
+
+        - else
+          %li= link_to t(:Apply), new_guild_application_path
+          %li= link_to t(:Login), login_path
+          %li
+            =link_to t(:Language), "#!",  class: 'dropdown-button', "data-activates" => "dropdown1"
+            %ul#dropdown1.dropdown-content
+              %li= link_to t(:English), params.merge(locale: "en")
+              %li= link_to t(:Swedish), params.merge(locale: "sv")
 
       %ul.side-nav#mobile-nav
         %li= link_to t(:About_us), about_path

@@ -1,0 +1,8 @@
+%p Detta är ett meddelande från WCMS.
+%p= "En användare har skapats för #{@user.email}"
+%p Du kan logga in med följande uppgifter:
+%ul
+  %li= "Användarnamn: #{@user.email}"
+  %li= "Lösenord: #{@password}"
+
+%p= "Mvh #{@admin.name} - WCMS Crew"

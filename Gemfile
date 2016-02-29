@@ -15,6 +15,7 @@ gem 'figaro'
 gem 'rbattlenet'
 gem 'bcrypt'
 gem 'gretel'
+gem "interactor-rails", "~> 2.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'byebug'
   # Removes all the logs from the terminal
   gem 'quiet_assets'
+  gem "letter_opener"
 end
 
 group :development do

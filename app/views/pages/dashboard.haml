@@ -27,4 +27,4 @@
 
   %div.col.s12.m4
     = link_to "Lägg till alt", new_alt_path, class: "btn"
-    = link_to "Ansök om att byta mail", new_alt_request_path, class: "btn"
+    = link_to "Ansök om att byta mail", new_alt_request_path, class: "btn" unless current_user.has_active_request?

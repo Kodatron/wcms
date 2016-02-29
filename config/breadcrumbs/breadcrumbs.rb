@@ -6,6 +6,11 @@ crumb :posts do
   link t(:Posts), admin_blog_path
 end
 
+crumb :posts_new do
+  link t(:New), new_post_path
+  parent :posts
+end
+
 crumb :post do |post|
   link post.title, post
   parent :posts

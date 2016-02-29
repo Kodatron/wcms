@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to admin_blog_path, notice: 'Post was successfully created.'
+      redirect_to admin_blog_path, notice: 'Your post was successfully created.'
     else
       render status: 402, action: :new
     end
@@ -29,7 +29,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to admin_blog_path, notice: resource_updated_flash
+      flash[:notice] = "Updated #{@post.title}."
+      redirect_to admin_blog_path
     else
       render status: 402, action: :edit
     end
@@ -42,12 +43,14 @@ class PostsController < ApplicationController
     else
       @post.draft!
     end
-    redirect_to admin_blog_path, notice: "Status has been updated!"
+    flash[:neutral] = "Status has been changed to #{@post.status}"
+    redirect_to admin_blog_path
   end
 
   def destroy
     if @post.destroy
-      redirect_to admin_blog_path, notice: 'Post was successfully destroyed.'
+      flash[:warning] = "#{@post.name} was permanently destroyed"
+      redirect_to admin_blog_path
     end
   end
 

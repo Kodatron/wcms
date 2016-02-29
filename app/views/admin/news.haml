@@ -1,4 +1,8 @@
-%div.container
+-breadcrumb :news
+%div.container.black-text
+  .row
+    .col.s12
+      =render partial: 'admin/navbar/navbar.news'
   %div.row
     %div.col.s12
       - if @search
@@ -11,17 +15,21 @@
           %th= t(:Views)
           %th= t(:Created_at)
           %th
+          %th
         %tbody
           - @news.each do |n|
             %tr
-              %td= link_to n.title, news_path(n)
-              %td= link_to n.status.capitalize, news_change_status_path(news_id: n.id, status: n.draft? ? :published : :draft), data: {confirm: 'Are you sure?'}
+              %td= link_to n.title.capitalize, news_path(n), class: "black-text"
+              %td= link_to n.status.capitalize, news_change_status_path(news_id: n.id),class: "draft" == n.status ? "amber-text text-accent-4" : "green-text" , data: {confirm: 'Are you sure?'}
               %td= n.permissions
               %td= n.views
               %td= n.created_at.to_date
               %td
-                = link_to t(:Edit), edit_news_path(n)
-                = link_to t(:Delete), news_path(n), method: :delete, data: {confirm: 'Are you sure?'}
+                = link_to edit_news_path(n) do
+                  %i.material-icons.left.purple-text.text-darken-2 create
+              %td
+                = link_to news_path(n), method: :delete, data: {confirm: 'Are you sure?'} do
+                  %i.material-icons.red-text remove_circle
   %div.row
-    %div.col.s12.pagination
+    %div.col.s12.center-align
       = paginate(@news)

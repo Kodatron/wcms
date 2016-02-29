@@ -14,6 +14,7 @@ gem 'kaminari'
 gem 'figaro'
 gem 'rbattlenet'
 gem 'bcrypt'
+gem 'gretel'
 gem "interactor-rails", "~> 2.0"
 
 # Use Capistrano for deployment

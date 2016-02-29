@@ -1,60 +1,74 @@
 %div.container-admin
   %div.row
-    %div.col.s2
-      = render partial: 'admin/partials/menu'
-
-    %div.col.s10
+    %div.col.s12
       %div.col.s3
-        %div.card.blue-grey.darken-1
+        %div.card.yellow.darken-2.center-align
           %div.card-content.white-text
-            %span.card-title Applications
-            %p= "You have #{@applications} pending applications"
-          %div.card-action
+            %span.admin-card-title 3
+            %h6= "Pending applications"
+          %div.admin-card-action
             = link_to "See applications", admin_applications_path
 
       %div.col.s3
-        %div.card.blue-grey.darken-1
+        %div.card.green.accent-3.center-align
           %div.card-content.white-text
-            %span.card-title Next raid
-            %p 12 nerds har anmält sig till raiden Blackrock Hold
-          %div.card-action
+            %span.admin-card-title 12
+            %h6 People attending Blackrock Hold
+          %div.admin-card-action
             = link_to "See raid", "#"
 
       %div.col.s3
-        %div.card.blue-grey.darken-1
+        %div.card.light-blue.accent-2.center-align
           %div.card-content.white-text
-            %span.card-title Raidgrupp
-            %p Det finns ingen raidgrupp skapad för nästa raid
-          %div.card-action
-            = link_to "Solve raid group", "#"
+            %span.admin-card-title 7
+            %h6 Unsolved tickets
+          %div.admin-card-action
+            = link_to "Solve tickets", "#"
 
       %div.col.s3
-        %div.card.blue-grey.darken-1
+        %div.card.red.darken-1.center-align
           %div.card-content.white-text
-            %span.card-title Alt requests
-            %p= "You have #{@requests} pending alt requests"
-          %div.card-action
+            %span.admin-card-title= @requests
+            %h6= "Pending alt requests"
+          %div.admin-card-action
             = link_to "See requests", admin_alt_requests_path
 
 
-      %div.col.s6
-        %h5 Uppgifter
-        %small You got stuffz to do!
+      %div.col.s6.black-text
+        %h3.thin.center-align= t(:Todos)
         %ul.collection
-          - (0..3).each do |i|
-            %li.collection-item.avatar.admin-item
-              %i.material-icons.circle assignment
-              %span.title
-                i
-              %p First line
-
-      %div.col.s6
-        %h5 Händelser
-        %small Detta har hänt sedan sist!
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.red-text warning
+            %span.title Need to fix new roles for raid forum
+            %p These users need the new "moderator role" for the..
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.green-text event
+            %span.title Create next weeks events
+            %p Remember to create next weeks events before sunday
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.red-text warning
+            %span.title Discouss ranking possiblity for Eatmyshocks
+            %p Should he be an admin or not?
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.blue-text lightbulb_outline
+            %span.title Filter forum threads
+            %p Filter forum threads thats gone wild
+      %div.col.s6.black-text
+        %h3.thin.center-align= t(:Events)
         %ul.collection
-          - (0..3).each do |i|
-            %li.collection-item.avatar.admin-item
-              %i.material-icons.circle notifications_active
-              %span.title
-                i
-              %p First line
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.purple-text notifications_active
+            %span.title Edited
+            %p Eatmyshocks edited the user Bombka
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.green-text notifications_active
+            %span.title Created
+            %p Bertius created a new dungeon
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.red-text notifications_active
+            %span.title Delted
+            %p Eatmyshocks deleted a draft from news
+          %li.collection-item.avatar.admin-item
+            %i.material-icons.circle.white.purple-text notifications_active
+            %span.title Edited
+            %p Swingaren edited the event Blackrock Hold

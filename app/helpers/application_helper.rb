@@ -1,10 +1,5 @@
 module ApplicationHelper
 
-  def init_api
-    @wow ||= WCMS::WowApi.new
-    @wow
-  end
-
   def load_navbar
     if params[:controller] == 'admin'
       begin
@@ -26,5 +21,9 @@ module ApplicationHelper
   def render_avatar_url region, avatar
     avatar = avatar.sub! 'avatar', 'profile'
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
+  end
+  # TODO : FLyyta senare
+  def has_admin_menu?(model)
+    model.try(:admin_menu)
   end
 end

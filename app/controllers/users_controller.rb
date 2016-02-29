@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   layout 'layouts/admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :init_api, only: [:show]
+
   def index
     @users = User.all
   end

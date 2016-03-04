@@ -18,4 +18,4 @@
 
 # Ignore application configuration
 /config/application.yml
-config/environment_variables.yml
+/config/environment_variables.yml

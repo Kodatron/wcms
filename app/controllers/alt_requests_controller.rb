@@ -12,13 +12,15 @@ class AltRequestsController < ApplicationController
     @alt_request = AltRequest.new(alt_request_params)
 
     if current_user.alt_requests << @alt_request
-      redirect_to dashboard_path, notice: "Request successfully sent!"
+      session[:return_to] ||= request.referer
+      redirect_to session.delete(:return_to), notice: "Request successfully sent!"
     else
       render status: 402, action: :new
     end
   end
 
   def show
+    render layout: "layouts/admin"
   end
 
   def approve_or_decline
@@ -33,9 +35,11 @@ class AltRequestsController < ApplicationController
       reason: params[:reason]
     )
     unless @interactor.success?
-      redirect_to admin_alt_requests_path, alert: "Something went wrong.."
+      flash[:warning] = "Something went wrong.."
+      redirect_to admin_alt_requests_path
     else
-      redirect_to admin_alt_requests_path, notice: "Status has been updated!"
+      flash[:notice] = "Request has been successfully approved."
+      redirect_to admin_alt_requests_path
     end
   end
 

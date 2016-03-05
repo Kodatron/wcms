@@ -44,6 +44,17 @@ class UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
+  def settings
+    if current_user.name != params[:name]
+      flash['warning'] = '403 Not Allowed'
+      redirect_to :dashboard
+    else
+      @alt_request = AltRequest.new
+      @alt = Alt.new
+      render layout: 'layouts/application'
+    end
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

@@ -3,6 +3,7 @@ class AltsController < ApplicationController
   before_action :init_api, only: [:create]
 
   def show
+
   end
 
   def new
@@ -16,7 +17,8 @@ class AltsController < ApplicationController
     @alt = Alt.new(alt_params)
     @alt.avatar = @wow.get_character_avatar(@alt.wow_server, @alt.wow_name)
     if current_user.alts << @alt
-      redirect_to dashboard_path, notice: 'Alt was successfully created.'
+      session[:return_to] ||= request.referer
+      redirect_to session.delete(:return_to), notice: 'Alt was successfully added.'
     else
       render status: 402, action: :new
     end

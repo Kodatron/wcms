@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete '/logout'  => 'sessions#destroy'
   get 'about_us' => 'pages#about_us', as: :about
   get 'dashboard' => 'pages#dashboard', as: :dashboard
+  get '/profile/:name/settings' => 'users#settings', as: :settings
 
   namespace :admin do
     get :index

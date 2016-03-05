@@ -27,3 +27,10 @@ en:
   Views: "Views"
   Read_more: "Read more.."
   Published_at: "Published at"
+
+  #General
+  Request: "Request"
+
+  #Alts
+  Reason_For_Approval: "Reason for approval"
+  Reason_For_Denial: "Reason for denial"

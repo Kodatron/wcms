@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
+//require "http://code.jquery.com/ui/1.9.1/jquery-ui.js"
 $( document ).ready(function() {
   $('.modal-trigger').leanModal();
   $(".button-collapse").sideNav();
@@ -33,4 +33,16 @@ $( document ).ready(function() {
       selectMonths: true, // Creates a dropdown to control month
       selectYears: 15 // Creates a dropdown of 15 years to control year
   });
+    $('.custom-tabs .tab-links a').on('click', function(e)  {
+        var currentAttrValue = jQuery(this).attr('href');
+
+        $('.custom-tabs ' + currentAttrValue).show().siblings().hide();
+
+        /*jQuery(this).addClass('active').siblings('li a').removeClass('active');*/
+        /*Fungerar bättre */
+        $('ul.admin-collection.tab-links').find('.active').removeClass('active');
+        $(this).addClass('active');
+
+        e.preventDefault();
+    });
 });

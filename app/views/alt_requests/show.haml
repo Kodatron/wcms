@@ -1,21 +1,46 @@
+-breadcrumb :alt_request, @alt_request
 .container
-  .row.dark-sh-well
-    .col.s12
-      = @alt_request.inspect
-
-    %div.col.s6
-      %ul.collapsible{"data-collapsible" => "accordion"}
+  .row
+    .col.s12.black-text.center-align
+      %h3.thin=t(:Handle_Alt_Request)
+  .row
+    .col.s12.black-text.center-align
+      .col.s5.center-align
+        %h5.thin= t(:Current_main)
+        =image_tag(render_thumbnail_url(@alt_request.user.profile.wow_region, @alt_request.user.profile.avatar), alt: "Avatar", class: "img-responsive border-img")
+        %h5.thin=@alt_request.user.name
+      .col.s2.center-align
+        %i.material-icons.large swap_horiz
+      .col.s5.center-align
+        %h5.thin= t(:Requested_main)
+        =image_tag(render_thumbnail_url(@alt_request.alt.wow_region, @alt_request.alt.avatar), alt: "Avatar", class: "img-responsive border-img")
+        %h5.thin=@alt_request.alt.wow_name
+    .col.s12.black-text.center-align
+      %h5.thin= t(:Reason)
+      %p
+      -if @alt_request.reason.empty?
+        = t(:No_reason_added)
+      -else
+        = @alt_request.reason
+    %div.col.s6.center-align
+      %ul.collapsible.white-text{"data-collapsible" => "accordion"}
         %li
-          %div.collapsible-header Godkänn
-          %div.collapsible-body
+          %div.collapsible-header.green Godkänn
+          %div.collapsible-body.black-text
             = form_tag alt_request_approve_or_decline_path(alt_request_id: @alt_request.id, status: :approved) do
-              = text_field_tag :reason
-              = submit_tag "Approve"
-    %div.col.s6
-      %ul.collapsible{"data-collapsible" => "accordion"}
+              .input_field.col.s12
+                =label_tag t(:Reason_For_Approval)
+                = text_field_tag :reason
+              .input_field
+                = submit_tag "Approve", class: "btn green"
+    %div.col.s6.center-align
+      %ul.collapsible.white-text{"data-collapsible" => "accordion"}
         %li
-          %div.collapsible-header Neka
-          %div.collapsible-body
+          %div.collapsible-header.red Neka
+          %div.collapsible-body.black-text
             = form_tag alt_request_approve_or_decline_path(alt_request_id: @alt_request.id, status: :declined) do
-              = text_field_tag :reason
-              = submit_tag "Decline"
+              .input_field.col.s12
+                = label_tag t(:Reason_For_Denial)
+                = text_field_tag :reason
+              .input_field.col.s12.center-align
+                = submit_tag "Decline", class: "btn red"

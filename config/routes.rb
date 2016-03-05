@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :profiles
   resources :users
   resources :pages
-
+  resources :account_activations, only: [:edit]
+  
   get 'sessions/new'
 
   root :to => "pages#index"

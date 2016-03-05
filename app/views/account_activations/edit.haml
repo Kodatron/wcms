@@ -1,0 +1,15 @@
+.container
+  .row
+    .col.s12
+      .col.s3
+      .col.s6
+        = form_for(@user) do |f|
+          %div.input_field.col.s12
+            = f.label :password
+            = f.password_field :password
+          %div.input_field.col.s12
+            = f.label :password_confirmation, "Confirmation"
+            = f.password_field :password_confirmation
+          %div.input_field.col.s12
+            = f.submit t(:Save), class: "btn btn-primary"
+      .col.s3

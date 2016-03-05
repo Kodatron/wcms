@@ -1,10 +1,8 @@
-%p= "Hej #{@user.profile.firstname}!"
+%p= "Welcome to WCMS,  #{@user.profile.firstname}!"
 %p Din ansökan har blivit godkänd.
-%p= "Meddelande: #{@reason}"
-%p Dina inloggninsuppgifter är:
-%ul
-  %li= "Användarnamn: #{@user.email}"
-  %li= "Lösenord: #{@password}"
+%p= "Message: #{@reason}"
+%p To activate your account, klick the link below and choose a password. Then you can login.
 
-%p Du kan alltid byta lösenord när du är inloggad.
+%p= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email)
+
 %p= "Mvh #{@admin.name} - WCMS Crew"

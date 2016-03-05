@@ -1,0 +1,7 @@
+%h1= "Welcome #{@user.profile.firstname} #{@user.profile.lastname}"
+%h2= t(:Activation_email)
+
+%p
+  Welcome to WCMS! To activate your account, klick the link below and choose a password. Then you can login.
+
+%p= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email)

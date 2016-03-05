@@ -7,12 +7,6 @@
     %div.input_field.col.s6
       =f.label :email
       =f.email_field :email
-    %div.input_field.col.s6
-      =f.label :password
-      =f.password_field :password
-    %div.input_field.col.s6
-      =f.label :password_confirmation, "Confirmation"
-      =f.password_field :password_confirmation
 
     =f.fields_for :profile do |profile|
       =profile.hidden_field :avatar, value: ''

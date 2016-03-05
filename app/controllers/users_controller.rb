@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'layouts/admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :init_api, only: [:show]
+  before_action :init_api, only: [:show, :update]
 
   def index
     @users = User.all
@@ -32,6 +32,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      @user.profile['avatar'] = @wow.get_character_avatar(@user.profile["wow_server"], @user.name)
+      @user.save
       redirect_to @user, notice: "#{@user.name} was successfully updated."
     else
       render status: 402, action: :edit

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   layout 'layouts/admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :init_api, only: [:show]
+
   def index
     @users = User.all
   end
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
   def create
     password = user_params[:password]
     @user = User.new(user_params)
-    @user.profile['avatar'] = init_character_avatar(user_params)
+    @user.profile['avatar'] = @wow.get_character_avatar(@user.profile["wow_server"], @user.name)
     if @user.save
       UserMailer.new_user_email(@user, current_user, password).deliver_now
       redirect_to @user, notice: "#{@user.name} was successfully created."
@@ -42,15 +44,18 @@ class UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  private
-    # TODO: Move to api-module
-    def init_character_avatar user
-      name = user['name']
-      realm = user['profile_attributes']['wow_server']
-      thumbnail = WowApi.new
-      thumbnail.get_character_avatar(realm, name)
+  def settings
+    if current_user.name != params[:name]
+      flash['warning'] = '403 Not Allowed'
+      redirect_to :dashboard
+    else
+      @alt_request = AltRequest.new
+      @alt = Alt.new
+      render layout: 'layouts/application'
     end
+  end
 
+  private
     def set_user
       @user = User.find(params[:id])
     end

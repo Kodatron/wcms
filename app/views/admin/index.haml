@@ -4,7 +4,7 @@
       %div.col.s3
         %div.card.yellow.darken-2.center-align
           %div.card-content.white-text
-            %span.admin-card-title 3
+            %span.admin-card-title= @applications
             %h6= "Pending applications"
           %div.admin-card-action
             = link_to "See applications", admin_applications_path
@@ -28,10 +28,10 @@
       %div.col.s3
         %div.card.red.darken-1.center-align
           %div.card-content.white-text
-            %span.admin-card-title 2
-            %h6 Pending alt requests
+            %span.admin-card-title= @requests
+            %h6= "Pending alt requests"
           %div.admin-card-action
-            = link_to "See alt requests", "#"
+            = link_to "See requests", admin_alt_requests_path
 
 
       %div.col.s6.black-text

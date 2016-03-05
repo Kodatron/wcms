@@ -1,0 +1,23 @@
+-breadcrumb :alt_requests
+%div.container.black-text.center-align
+  .row
+    .col.s12
+      %h3.thin Alt Requests
+  %div.row
+    %div.col.s12
+      - if @search
+        %p= search_results_for(@search)
+      %table.striped
+        %thead
+          %th= t(:Current_main)
+          %th= t(:Requested_main)
+          %th= t(:Created_at)
+        %tbody
+          - @alt_requests.each do |alt|
+            %tr
+              %td= link_to alt.user.name, alt_request_path(alt), class: "black-text"
+              %td= alt.alt.wow_name
+              %td= alt.created_at.to_date
+    %div.row
+      %div.col.s12.center-align
+        = paginate(@alt_requests)

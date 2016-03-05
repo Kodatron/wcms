@@ -156,3 +156,36 @@
       background-color: $secondary-color;
   }
 }
+
+/*** CUSTOM COLLECTION ****/
+.admin-collection{
+  @extend .collection;
+  border: #151515;
+  border-radius: 0;
+  .collection-item{
+    background-color: #111111;
+    color: #fff;
+  }
+
+  a.collection-item{
+    display: block;
+    transition: .25s;
+    color: #ffffff;
+    &:not(.active) {
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+
+
+
+/**** Custom Tabs ****/
+.custom-tab{
+  display: none;
+}
+.custom-tab.active{
+  display: block;
+}

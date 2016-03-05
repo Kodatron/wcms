@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GuildApplicationTest < ActiveSupport::TestCase
+class AltRequestControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

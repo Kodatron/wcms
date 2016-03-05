@@ -1,4 +1,5 @@
-= form_for(@alt) do |f|
+= form_for Alt.new do |f|
+
   =f.hidden_field :avatar, value: ''
   %div.input_field.col.s6
     =f.label :wow_name

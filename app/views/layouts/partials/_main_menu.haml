@@ -31,7 +31,7 @@
 
 %ul#profile-dropdown.dropdown-content
   %li=link_to t(:Profile), "#"
-  %li=link_to t(:Settings), "/profile/#{current_user.name}/settings"
+  %li=link_to t(:Settings), user_settings_path
   %li=link_to t(:Home), "/"
   %li.divider
   %li=link_to t(:Admin), admin_index_path

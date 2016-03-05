@@ -34,9 +34,11 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       @user.profile['avatar'] = @wow.get_character_avatar(@user.profile["wow_server"], @user.name)
       @user.save
-      redirect_to @user, notice: "#{@user.name} was successfully updated."
+      flash[:notice] = "#{@user.name} was successfully updated."
+      redirect_to user_settings_path(tab: :user)
     else
-      render status: 402, action: :edit
+      flash[:warning] = "Something went wrong.."
+      redirect_to user_settings_path(tab: :user)
     end
   end
 
@@ -44,17 +46,6 @@ class UsersController < ApplicationController
     @user.destroy
     flash['warning'] = "#{@user.name} was permanently removed."
     redirect_to admin_users_path
-  end
-
-  def settings
-    if current_user.name != params[:name]
-      flash['warning'] = '403 Not Allowed'
-      redirect_to :dashboard
-    else
-      @alt_request = AltRequest.new
-      @alt = Alt.new
-      render layout: 'layouts/application'
-    end
   end
 
   private

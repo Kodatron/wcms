@@ -1,7 +1,10 @@
 .slider {
   position: relative;
-  height: 400px;
   width: 100%;
+  background-color: #212121;
+  box-shadow: 0 0 5px #000000;
+  border-radius: 5px;
+  padding: 10px 0 20px 0;
 
   // Fullscreen slider
   &.fullscreen {

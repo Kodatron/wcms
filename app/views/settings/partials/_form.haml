@@ -1,0 +1,6 @@
+= form_for @setting do |f|
+  %div.input_field.col.s6
+    = f.label :locale
+    = f.select :locale,  Setting.locales.keys.to_a.map { |w| [w.humanize, w]}
+  %div.input_field.col.s12
+    = f.submit "Save", class: 'btn btn-primary'

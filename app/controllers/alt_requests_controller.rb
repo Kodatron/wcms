@@ -13,9 +13,11 @@ class AltRequestsController < ApplicationController
 
     if current_user.alt_requests << @alt_request
       session[:return_to] ||= request.referer
-      redirect_to session.delete(:return_to), notice: "Request successfully sent!"
+      flash[:notice] =  "Request successfully sent!"
+      redirect_to user_settings_path(tab: alts)
     else
-      render status: 402, action: :new
+      flash[:warning] = "Something went wrong.."
+      redirect_to user_settings_path(tab: alts)
     end
   end
 

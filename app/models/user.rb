@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   before_save { self.email = email.downcase }
+  after_create :init_settings
 
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -22,6 +23,11 @@ class User < ActiveRecord::Base
     joins("INNER JOIN profiles p on user_id = p.user_id").
     where("users.name LIKE ? or users.email LIKE ? or p.firstname LIKE ? or p.lastname LIKE ? or p.wow_region LIKE ? or p.wow_server or p.phone LIKE ?", *(["%#{term}%"]*6))
   }
+
+  def init_settings
+    setting = Setting.new(user_id: self.id, locale: 0)
+    setting.save!
+  end
 
   def has_active_request?
     self.alt_requests.pending.size > 0

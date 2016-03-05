@@ -15,16 +15,8 @@
                   = link_to "Recruitment of druids", "#"
                   in the druid forums
 
-              %div.collapsible-body
-                %span.text
-                  HEJ HEJ HEJ
-
     %div.col.s3.offset-s1.dark-sh-well
       %h4.thin Raids
 
     %div.col.s3.offset-s1.dark-sh-well
       %h4.thin Forum
-
-  %div.col.s12.m4
-    = link_to "Lägg till alt", new_alt_path, class: "btn"
-    = link_to "Ansök om att byta main", new_alt_request_path, class: "btn" unless current_user.has_active_request?

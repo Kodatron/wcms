@@ -3,7 +3,7 @@ class ServersController < ApplicationController
   before_action :check_admin
 
   def index
-    Profile.wow_regions.keys.to_a.each_with_index do |region, index|
+    Server.wow_regions.keys.to_a.each_with_index do |region, index|
       y = @wow.get_realm_status(region)
       y['realms'].each do |r|
         s = Server.new(name: r['name'], wow_region: index, locale: r['locale'])

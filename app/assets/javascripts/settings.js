@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  
+$(document).on('page:load', function() {
+
   $('.slider').hide(); //Initially elements with class: slider wil be hidden.
 
   $('a').click(function() {

@@ -4,7 +4,7 @@ class GuildApplicationsController < ApplicationController
   before_action :check_admin, except: [:new, :create]
   before_action :set_guild_application, only: [:show, :edit, :update, :destroy]
   before_action :init_api, only: [:approve_or_decline]
-
+  # TODO Använd wrappern
   def show
     @stats = RBattlenet::Wow::Character.find(name: @guild_application.wow_name, realm: @guild_application.wow_server, fields: ["items"])
   end

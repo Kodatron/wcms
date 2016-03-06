@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'layouts/admin'
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :init_api, only: [:show, :update]
+  before_action :init_api, only: [:show, :update, :create]
 
   def index
     @users = User.all
@@ -19,11 +19,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    password = user_params[:password]
     @user = User.new(user_params)
-    @user.profile['avatar'] = @wow.get_character_avatar(@user.profile["wow_server"], @user.name)
     if @user.save
-      UserMailer.new_user_email(@user, current_user, password).deliver_now
+      @user.profile.update_attributes!(avatar: @wow.get_character_avatar(@user.profile.wow_server, @user.name))
+      UserMailer.create_user_mail(@user).deliver_now
       redirect_to @user, notice: "#{@user.name} was successfully created."
     else
       render status: 402, action: :new
@@ -31,7 +30,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user && !@user.activated?
+      @user.activate
+      if @user.update(user_params)
+        log_in @user
+        flash[:notice] = t(:Account_activated)
+        redirect_to :dashboard
+      end
+    elsif @user.update(user_params)
       @user.profile['avatar'] = @wow.get_character_avatar(@user.profile["wow_server"], @user.name)
       @user.save
       flash[:notice] = "#{@user.name} was successfully updated."

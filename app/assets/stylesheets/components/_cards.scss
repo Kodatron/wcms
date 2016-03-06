@@ -3,7 +3,7 @@
 .card-panel {
   transition: box-shadow .25s;
   padding: $card-padding;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
+  margin: $element-top-margin 10px $element-bottom-margin 10px;
   border-radius: 2px;
   @extend .z-depth-1;
   background-color: $card-bg-color;

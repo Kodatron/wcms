@@ -1,0 +1,25 @@
+= form_for(@profile) do |profile|
+  - if @profile.new_record?
+    = profile.hidden_field :avatar, value: ''
+  - else
+    = profile.hidden_field :avatar, value: @profile.avatar
+  %div.input_field.col.s6
+    = profile.label :firstname
+    = profile.text_field :firstname
+  %div.input_field.col.s6
+    = profile.label :lastname
+    = profile.text_field :lastname
+  %div.input_field.col.s6
+    = profile.label :phone
+    = profile.text_field :phone
+  %div.input_field.col.s6
+    = profile.label  :wow_server
+    = profile.text_field :wow_server
+  %div.input_field.col.s6
+    = profile.label :wow_class
+    = profile.select :wow_class,  Profile.wow_classes.keys.to_a.map { |w| [w.humanize, w]}
+  %div.input_field.col.s6
+    = profile.label :wow_region
+    = profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
+  %div.input_field.col.s12
+    =profile.submit "Save", class: "btn btn-primary"

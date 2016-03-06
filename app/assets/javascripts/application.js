@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //require "http://code.jquery.com/ui/1.9.1/jquery-ui.js"
-$( document ).ready(function() {
+
+$(document).on('page:load', function() {
   $('.modal-trigger').leanModal();
   $(".button-collapse").sideNav();
   $('select').material_select();

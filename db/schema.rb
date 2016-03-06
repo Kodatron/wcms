@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224183156) do
+ActiveRecord::Schema.define(version: 20160305190959) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -91,6 +91,13 @@ ActiveRecord::Schema.define(version: 20160224183156) do
     t.string   "avatar",     limit: 255
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "locale",     limit: 1, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -31,8 +31,7 @@ class UsersController < ApplicationController
 
   def update
     if @user && !@user.activated?
-      @user.update_attribute(:activated , true)
-      @user.update_attribute(:activated_at, Time.zone.now)
+      @user.activate
       if @user.update(user_params)
         log_in @user
         flash[:notice] = t(:Account_activated)

@@ -2,7 +2,8 @@
   .row
     .col.s12
       .col.s6.offset-s3
-        = form_for(@user) do |f|
+        = form_for(@user, url: password_reset_path(params[:id])) do |f|
+          = hidden_field_tag :email, @user.email
           %div.input_field.col.s12
             = f.label :password
             = f.password_field :password
@@ -10,4 +11,5 @@
             = f.label :password_confirmation, "Confirmation"
             = f.password_field :password_confirmation
           %div.input_field.col.s12
-            = f.submit t(:Save), class: "btn btn-primary"
+            = f.submit class: "btn btn-primary" do
+              =t(:Update_password)

@@ -1,0 +1,9 @@
+%div.container
+  %div.row
+    %div.col.s6.offset-s3
+      =form_for(:password_reset, url: password_resets_path) do |f|
+        %div.input-field.col.s12
+          =f.label :email
+          =f.email_field :email
+        %div.input-field.col.s6
+          =f.submit "Send", class: "btn btn-primary"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305190856) do
+ActiveRecord::Schema.define(version: 20160306000628) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 20160305190856) do
     t.string   "activation_digest", limit: 255
     t.boolean  "activated",                     default: false
     t.datetime "activated_at"
+    t.string   "reset_digest",      limit: 255
+    t.datetime "reset_sent_at"
   end
 
   add_index "users", ["email", "name"], name: "index_users_on_email_and_name", unique: true, using: :btree

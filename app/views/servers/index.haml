@@ -1,0 +1,13 @@
+.container
+  .row
+    .col.s12
+      %table
+        %thead
+          %th Namn
+          %th Locale
+        %tbody
+          - @servers.each do |s|
+            %td= s.name
+            %td= s.locale
+
+    = paginate(@servers)

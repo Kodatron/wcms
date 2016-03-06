@@ -1,0 +1,19 @@
+.container.black-text
+  .row
+    .col.s12
+      =render partial: 'admin/navbar/navbar.servers'
+  .row
+    .col.s12
+      %table
+        %thead
+          %th Namn
+          %th Locale
+        %tbody
+          - @servers.each do |s|
+            %tr
+              %td= s.name
+              %td= s.locale
+
+  %div.row
+    %div.col.s12.center-align
+      = paginate(@servers)

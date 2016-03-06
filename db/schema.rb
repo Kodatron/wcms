@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305190959) do
+ActiveRecord::Schema.define(version: 20160306003549) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(version: 20160305190959) do
     t.string   "lastname",   limit: 255
     t.string   "phone",      limit: 255
     t.string   "avatar",     limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "servers", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "locale",     limit: 255
+    t.integer  "wow_region", limit: 1,   default: 0
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end

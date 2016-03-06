@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :servers
   resources :alts
   resources :profiles
   resources :users
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     get :users
     get :applications
     get :alt_requests
+    get :servers
   end
 
   resources :alt do
@@ -42,6 +44,8 @@ Rails.application.routes.draw do
   resources :posts do
     get :change_status, as: :change_status
   end
+
+  resources :servers, only: [:index]
 
   get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|password|twitch/ }, :defaults => {:tab => 'settings'}
 

@@ -22,6 +22,13 @@ module ApplicationHelper
     avatar = avatar.sub! 'avatar', 'profile'
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
+
+  def active_css_element(element, active_element)
+    if element.to_s == active_element.to_s
+      "active"
+    end
+  end
+
   # TODO : FLyyta senare
   def has_admin_menu?(model)
     model.try(:admin_menu)

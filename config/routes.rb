@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :settings, except: [:show]
 
   get 'sessions/new'
 
@@ -18,7 +19,6 @@ Rails.application.routes.draw do
   delete '/logout'  => 'sessions#destroy'
   get 'about_us' => 'pages#about_us', as: :about
   get 'dashboard' => 'pages#dashboard', as: :dashboard
-  get '/profile/:name/settings' => 'users#settings', as: :settings
 
   namespace :admin do
     get :index
@@ -27,6 +27,11 @@ Rails.application.routes.draw do
     get :users
     get :applications
     get :alt_requests
+    get :servers
+  end
+
+  resources :alt do
+    get :new
   end
 
   resources :alt_requests do
@@ -44,4 +49,9 @@ Rails.application.routes.draw do
   resources :posts do
     get :change_status, as: :change_status
   end
+
+  resources :servers, only: [:index]
+
+  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|password|twitch/ }, :defaults => {:tab => 'settings'}
+
 end

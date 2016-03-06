@@ -1,15 +1,15 @@
-%div.row.black-text
+%div.row
   =form_for(@user) do |f|
     = render 'shared/form_errors', target: @user
     %div.input_field.col.s6
       =f.label :name
       =f.text_field :name
+
     %div.input_field.col.s6
       =f.label :email
       =f.email_field :email
 
     =f.fields_for :profile do |profile|
-      =profile.hidden_field :avatar, value: ''
       %div.input_field.col.s6
         =profile.label :firstname
         =profile.text_field :firstname
@@ -28,5 +28,14 @@
       %div.input_field.col.s6
         =profile.label :wow_region
         =profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
-      %div.input_field.col.s12
-        =f.submit "Save", class: "btn btn-primary"
+
+    %div.input_field.col.s6
+      =f.label :password
+      =f.password_field :password
+
+    %div.input_field.col.s6
+      =f.label :password_confirmation, "Confirmation"
+      =f.password_field :password_confirmation
+
+    %div.input_field.col.s12
+      =f.submit "Save", class: "btn btn-primary"

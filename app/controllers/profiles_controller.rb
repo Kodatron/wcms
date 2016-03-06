@@ -12,7 +12,8 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to user_path(current_user), notice: 'Profile was successfully updated.'
+      flash[:notice] = "Your profile was successfully updated!"
+      redirect_to user_settings_path(tab: :profile)
     else
       render status: 402, action: :edit
     end
@@ -26,6 +27,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.fetch(:profile, {})
+      params.require(:profile).permit(:user_id, :firstname, :lastname, :phone, :wow_region, :wow_server, :wow_class, :avatar)
     end
 end

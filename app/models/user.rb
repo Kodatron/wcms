@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
-
   has_secure_password :validations => false
+  after_create :init_settings
 
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
                         allow_blank: true
 
   has_one :profile, dependent: :destroy
+  has_one :setting, dependent: :destroy
   has_many :alts, dependent: :destroy
   has_many :alt_requests, dependent: :destroy
 
@@ -25,6 +26,11 @@ class User < ActiveRecord::Base
     joins("INNER JOIN profiles p on user_id = p.user_id").
     where("users.name LIKE ? or users.email LIKE ? or p.firstname LIKE ? or p.lastname LIKE ? or p.wow_region LIKE ? or p.wow_server or p.phone LIKE ?", *(["%#{term}%"]*6))
   }
+
+  def init_settings
+    setting = Setting.new(user_id: self.id, locale: 0)
+    setting.save!
+  end
 
   def has_active_request?
     self.alt_requests.pending.size > 0

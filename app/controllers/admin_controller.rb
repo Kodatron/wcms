@@ -48,6 +48,11 @@ class AdminController < ApplicationController
     @alt_requests = paginate(@alt_requests)
   end
 
+  def servers
+    @servers = Server.all
+    @servers = paginate(@servers)
+  end
+
   private
   def paginate collection
     @collection = collection.page(params[:page]).per(15)

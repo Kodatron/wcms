@@ -93,6 +93,21 @@ ActiveRecord::Schema.define(version: 20160306000628) do
     t.datetime "updated_at",                         null: false
   end
 
+  create_table "servers", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "locale",     limit: 255
+    t.integer  "wow_region", limit: 1,   default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "locale",     limit: 1, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "email",             limit: 255

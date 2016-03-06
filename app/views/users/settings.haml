@@ -1,4 +1,4 @@
-.container.dark-sh-well
+.dark-sh-well
   .row
     .col.s12.center-align
       %h3.thin= t(:Settings)
@@ -9,19 +9,19 @@
         %li
           = link_to "#alts", class: "collection-item active" do
             %i.material-icons.left supervisor_account
-            =t(:Alts)
+            = t(:Alts)
         %li
           = link_to "#password", class: "collection-item" do
             %i.material-icons.left verified_user
-            =t(:Password)
+            = t(:Password)
         %li
           = link_to "#profile", class: "collection-item" do
             %i.material-icons.left perm_identity
-            =t(:Profile)
+            = t(:Profile)
         %li
-          =link_to "#twitch", class: "collection-item" do
+          = link_to "#twitch", class: "collection-item" do
             %i.material-icons.left video_label
-            =t(:Twitch)
+            = t(:Twitch)
     .col.s9
       .col.s12.custom-tab.active#alts
         .row
@@ -31,10 +31,10 @@
         .row
           .col.s12
             %h5.thin= t(:Create_alt_request)
-          -if current_user.has_active_request?
-            %p= t(:You_have_pending_alt_request)
-          -else
-            = render partial: "alt_requests/partials/form"
+            - if current_user.has_active_request?
+              %p= t(:You_have_pending_alt_request)
+            - else
+              = render partial: "alt_requests/partials/form"
       .col.s12.custom-tab#password
         %h5.thin Manage Password
       .col.s12.custom-tab#profile

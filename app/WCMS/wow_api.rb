@@ -1,6 +1,6 @@
 class WowApi
 
-  def init_api_call(region = "eu", locale = "en_GB")
+  def init_api_call(region = 'eu', locale = "en_GB")
     RBattlenet.authenticate(api_key: ENV['BLIZZ_KEY'])
     RBattlenet.set_region(region: region, locale: locale)
   end
@@ -69,5 +69,10 @@ class WowApi
   def get_challene_region_leaderboard(*args)
     init_api_call(*args)
     RBattlenet::Wow::Challenge.find_region
+  end
+
+  def get_realms(region, *args)
+    init_api_call(*args)
+    RBattlenet::Wow::Realm.status
   end
 end

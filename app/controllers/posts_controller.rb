@@ -51,12 +51,12 @@ class PostsController < ApplicationController
       status: params[:status]
     )
     unless @interactor.success?
-      redirect_to admin_blog_path, alert: "Something went wrong.."
+      flash[:warning] = "Not possible. Something went wrong."
+      redirect_to admin_blog_path
     else
-      redirect_to admin_blog_path, notice: "Status has been updated!"
+      flash[:neutral] = "Status has been changed to #{@post.status}"
+      redirect_to admin_blog_path
     end
-    flash[:neutral] = "Status has been changed to #{@post.status}"
-    redirect_to admin_blog_path
   end
 
   def destroy

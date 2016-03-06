@@ -1,4 +1,4 @@
-class ChangeStatus
+class ChangeStatuss
   include Interactor
 
   def call

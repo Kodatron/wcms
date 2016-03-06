@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
   validates :published_at, presence: true
 
+  belongs_to :user
   #scopes
   scope :by_date, -> {
     where("published_at <= ?", Date.current).order("published_at DESC")

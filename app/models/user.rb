@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_one :setting, dependent: :destroy
   has_many :alts, dependent: :destroy
   has_many :alt_requests, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :news, dependent: :destroy
 
   accepts_nested_attributes_for :profile
 

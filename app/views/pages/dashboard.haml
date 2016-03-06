@@ -1,22 +1,21 @@
-%div.row
-  %div.col.s12
-    %div.col.s8.dark-sh-well
-      %div.col.s12
-        %h4.thin In the air
-        %ul.collapsible
-          - (0..2).each do |i|
-            %li
-              %div.collapsible-header{"data-collapsible" => "accordion"}
-                =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "circle")
-                %p
-                  %span{ class: current_user.profile.wow_class}
-                    = "#{current_user.name}"
-                  responded to thread
-                  = link_to "Recruitment of druids", "#"
-                  in the druid forums
+%div.col.s12
+  %div.col.s8.dark-sh-well
+    %div.col.s12
+      %h4.thin In the air
+      %ul.collapsible
+        - (0..2).each do |i|
+          %li
+            %div.collapsible-header{"data-collapsible" => "accordion"}
+              =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "circle")
+              %p
+                %span{ class: current_user.profile.wow_class}
+                  = "#{current_user.name}"
+                responded to thread
+                = link_to "Recruitment of druids", "#"
+                in the druid forums
 
-    %div.col.s3.offset-s1.dark-sh-well
-      %h4.thin Raids
+  %div.col.s3.offset-s1.dark-sh-well
+    %h4.thin Raids
 
-    %div.col.s3.offset-s1.dark-sh-well
-      %h4.thin Forum
+  %div.col.s3.offset-s1.dark-sh-well
+    %h4.thin Forum

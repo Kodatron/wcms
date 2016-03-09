@@ -1,5 +1,4 @@
 = form_for AltRequest.new do |f|
-
   .input_field.col.s6
     = f.label :alt_id
     = f.select(:alt_id, current_user.alts.map { |alt| [alt.wow_name, alt.id ]})
@@ -7,4 +6,6 @@
     = f.label :reason
     = f.text_field :reason
   .input_field.col.s12
-    = f.submit "Skicka", class: "btn btn-prumary"
+    = f.submit "Skicka", class: "btn btn-prumary slider-btn"
+
+  .col.s12

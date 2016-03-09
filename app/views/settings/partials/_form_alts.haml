@@ -1,32 +1,32 @@
-.col.s12
-  .row
-    .col.s12
-      = link_to t(:Add_an_alt), "#", class: 'btn', data: { slider_content: '#new_alt' }
-      = link_to t(:New_alt_request), "#", class: 'btn', data: { slider_content: '#new_alt_request' }
+.row
+  .col.s12
+    %h5.thin= t(:Alts)
+  = link_to t(:Add_an_alt), "#", class: 'btn', data: { slider_content: '#new_alt' }
+  = link_to t(:New_alt_request), "#", class: 'btn', data: { slider_content: '#new_alt_request' }
 
-  .row#new_alt.slider
+.row#new_alt.slider
+  .col.s12
     .col.s12
-      .col.s12
-        %h5.thin= t(:Add_an_alt)
-      = render partial: "alts/partials/form"
+      %h5.thin= t(:Add_an_alt)
+    = render partial: "alts/partials/form"
 
-  .row#new_alt_request.slider
+.row#new_alt_request.slider
+  .col.s12
     .col.s12
-      .col.s12
-        %h5.thin= t(:Create_alt_request)
-      - if current_user.has_active_request?
-        %p= t(:You_have_pending_alt_request)
-      - else
-        = render partial: "alt_requests/partials/form"
-  .row
-    %table
-      %thead
-        %th
-        %th
-      %tbody
-      - current_user.alts.each do |alt|
-        %tr
-          %td
-            =image_tag(render_thumbnail_url(alt.wow_region, alt.avatar),class: "img-table circle")
-          %td
-            = alt.wow_name
+      %h5.thin= t(:Create_alt_request)
+    - if current_user.has_active_request?
+      %p= t(:You_have_pending_alt_request)
+    - else
+      = render partial: "alt_requests/partials/form"
+.row
+  %table
+    %thead
+      %th
+      %th
+    %tbody
+    - current_user.alts.each do |alt|
+      %tr
+        %td
+          =image_tag(render_thumbnail_url(alt.wow_region, alt.avatar),class: "img-table circle")
+        %td
+          = alt.wow_name

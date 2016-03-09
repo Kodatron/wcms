@@ -1,7 +1,6 @@
 
 .col.s12.dark-sh-well
   .col.s3
-    %h5.thin= t(:Settings)
     %ul.admin-collection.tab-links
       %li
         = link_to user_settings_path(tab: :settings), class: ["collection-item", active_css_element(params[:tab], :settings)].join(' ') do

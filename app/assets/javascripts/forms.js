@@ -380,17 +380,12 @@
 
       // Wrap Elements
       $select.wrap(wrapper);
-      // Add Select Display Element
-      var dropdownIcon = $('<span class="caret">&#9660;</span>');
-      if ($select.is(':disabled'))
-        dropdownIcon.addClass('disabled');
 
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
       var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
-      $newSelect.before(dropdownIcon);
 
       $newSelect.after(options);
       // Check if section element is disabled

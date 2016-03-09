@@ -48,17 +48,15 @@ input[type=search],
 textarea.materialize-textarea {
 
   // General Styles
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid $input-border-color;
-  border-radius: 0;
-  outline: none;
+  background-color: #212121;
+  border: 1px solid #111111;
+  border-radius: 5px;
   height: 3rem;
-  width: 100%;
+  width: 96%;
 
   font-size: 1rem;
-  margin: 0 0 15px 0;
-  padding: 0;
+  margin: 0 0 1rem 0;
+  padding: 0 0.5rem;
   box-shadow: none;
   box-sizing: content-box;
   transition: all .3s;
@@ -146,7 +144,7 @@ textarea.materialize-textarea {
     font-size: 2rem;
     transition: color .2s;
 
-    &.active { color: $input-focus-color; }
+    &.active { color: #212121; }
   }
   .prefix ~ input,
   .prefix ~ textarea {
@@ -617,37 +615,18 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after {
   position: relative;
 
   input.select-dropdown {
-    position: relative;
     cursor: pointer;
     // color: #444;
-    background-color: transparent;
+    background-color: #212121;
     border: none;
-    border-bottom: 1px solid $input-border-color;
     outline: none;
     height: 3rem;
     line-height: 3rem;
-    width: 100%;
+    width: 97%;
     font-size: 1rem;
-    margin: 0 0 15px 0;
-    padding: 0;
+    margin: 0 0 1rem 0;
+    padding: 0 0.5rem;
     display: block;
-  }
-
-  span.caret {
-    color: initial;
-    position: absolute;
-    right: 0;
-    top: 16px;
-    font-size: 10px;
-    &.disabled {
-      color: $input-disabled-color;
-    }
-  }
-
-  & + label {
-    position: absolute;
-    top: -14px;
-    font-size: $label-font-size;
   }
 }
 
@@ -909,10 +888,10 @@ input[type=range]:focus::-ms-fill-upper {
    Text Inputs + Textarea
 ****************************/
 select {
-   background-color: rgba(255, 255, 255, 0.90);
+   background-color: #212121;
    width: 100%;
    padding: 5px;
-   border: 1px solid #f2f2f2;
+   border: 1px solid #121212;
    border-radius: 2px;
    height: 3rem;
 }

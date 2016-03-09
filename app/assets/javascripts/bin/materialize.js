@@ -1930,7 +1930,7 @@ $(document).ready(function(){
         }
         else {
           // Insert as text;
-          toast.innerHTML = html; 
+          toast.innerHTML = html;
         }
         // Bind hammer
         var hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -2239,7 +2239,7 @@ $(document).ready(function(){
               $('body').css('overflow', 'hidden');
               // Push current drag target on top of DOM tree
               $('body').append(dragTarget);
-              
+
               if (options.edge === 'left') {
                 dragTarget.css({width: '50%', right: 0, left: ''});
                 menu_id.velocity({left: 0}, {duration: 300, queue: false, easing: 'easeOutQuad'});
@@ -2480,9 +2480,9 @@ $(document).ready(function(){
 		    var offset = $(this.hash).offset().top + 1;
 
 //          offset - 200 allows elements near bottom of page to scroll
-			
+
 	    	$('html, body').animate({ scrollTop: offset - 200 }, {duration: 400, queue: false, easing: 'easeOutCubic'});
-			
+
 		  });
 		});
 		options = options || {
@@ -2962,17 +2962,12 @@ $(document).ready(function(){
 
       // Wrap Elements
       $select.wrap(wrapper);
-      // Add Select Display Element
-      var dropdownIcon = $('<span class="caret">&#9660;</span>');
-      if ($select.is(':disabled'))
-        dropdownIcon.addClass('disabled');
 
       // escape double quotes
       var sanitizedLabelHtml = label.replace(/"/g, '&quot;');
 
       var $newSelect = $('<input type="text" class="select-dropdown" readonly="true" ' + (($select.is(':disabled')) ? 'disabled' : '') + ' data-activates="select-options-' + uniqueID +'" value="'+ sanitizedLabelHtml +'"/>');
       $select.before($newSelect);
-      $newSelect.before(dropdownIcon);
 
       $newSelect.after(options);
       // Check if section element is disabled

@@ -21,7 +21,7 @@
             %tr
               %td= link_to post.title, post_path(post), class: "black-text"
               %td
-                = link_to post.status.capitalize, post_change_status_path(post_id: post.id),class: "draft" == post.status ? "amber-text text-accent-4" : "green-text"  , data: {confirm: 'Are you sure?'}
+                = link_to post.status.capitalize, post_change_status_path(post_id: post.id, status: post.published? ? :draft : :published), class: "draft" == post.status ? "amber-text text-accent-4" : "green-text"  , data: {confirm: 'Are you sure?'}
               %td= post.views
               %td= post.published_at.to_date
               %td= post.created_at.to_date

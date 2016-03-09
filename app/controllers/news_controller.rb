@@ -54,9 +54,8 @@ class NewsController < ApplicationController
     unless @interactor.success?
       redirect_to admin_news_path, alert: "Something went wrong.."
     else
-      redirect_to admin_news_path, notice: "Status has been updated!"
+      redirect_to admin_news_path, notice: "Status has been updated to #{@news.status.capitalize}"
     end
-    redirect_to admin_news_path, notice: "Status has been updated to #{@news.status.capitalize}"
   end
 
   private

@@ -1,7 +1,6 @@
 
 .col.s12.dark-sh-well
   .col.s3
-    %h5.thin= t(:Settings)
     %ul.admin-collection.tab-links
       %li
         = link_to user_settings_path(tab: :settings), class: ["collection-item", active_css_element(params[:tab], :settings)].join(' ') do
@@ -19,10 +18,6 @@
         = link_to user_settings_path(tab: :alts), class: ["collection-item", active_css_element(params[:tab], :alts)].join(' ') do
           %i.material-icons.left supervisor_account
           = t(:Alts)
-      %li
-        = link_to user_settings_path(tab: :password), class: ["collection-item", active_css_element(params[:tab], :password)].join(' ') do
-          %i.material-icons.left verified_user
-          = t(:Password)
       %li
         = link_to user_settings_path(tab: :twitch), class: ["collection-item", active_css_element(params[:tab], :twitch)].join(' ') do
           %i.material-icons.left video_label

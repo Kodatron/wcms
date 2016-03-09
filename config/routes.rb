@@ -52,6 +52,6 @@ Rails.application.routes.draw do
 
   resources :servers, only: [:index]
 
-  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|password|twitch/ }, :defaults => {:tab => 'settings'}
+  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|twitch/ }, :defaults => {:tab => 'settings'}
 
 end

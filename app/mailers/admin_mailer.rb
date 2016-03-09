@@ -12,4 +12,14 @@ class AdminMailer < ApplicationMailer
   def get_admins
     @admins = User.all
   end
+
+  def error_to_admin(error, message, context)
+    @admins = get_admins
+    @error = error
+    @message = message
+    @context = context
+    @admins.each do |admin|
+      mail(to: admin.email, subject: )
+    end
+  end
 end

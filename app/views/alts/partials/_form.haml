@@ -1,4 +1,6 @@
-= form_for Alt.new do |f|
+= form_for @alt, remote: true, format: :json, html: {class: :ajax_form} do |f|
+  %div#error_explanation{style:'display:none'}
+    %ul#errors
   = f.hidden_field :avatar, value: ''
   .input_field.col.s6
     = f.label :wow_name

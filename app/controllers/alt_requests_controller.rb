@@ -12,12 +12,12 @@ class AltRequestsController < ApplicationController
     @alt_request = AltRequest.new(alt_request_params)
 
     if current_user.alt_requests << @alt_request
-      session[:return_to] ||= request.referer
       flash[:notice] =  "Request successfully sent!"
-      redirect_to user_settings_path(tab: alts)
+      render :js => "window.location = '#{user_settings_path(tab: :alts)}'"
     else
-      flash[:warning] = "Something went wrong.."
-      redirect_to user_settings_path(tab: alts)
+      respond_to do |format|
+        format.json { render json: @alt_request.errors.full_messages, status: 422 }
+      end
     end
   end
 

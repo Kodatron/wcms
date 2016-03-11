@@ -4,8 +4,10 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
   before_create :create_activation_digest
-  has_secure_password :validations => false
   after_create :init_settings
+
+  has_secure_password :validations => false
+
 
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },

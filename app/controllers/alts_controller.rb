@@ -12,10 +12,12 @@ class AltsController < ApplicationController
     @alt = current_user.alts.build(alt_params)
     @alt.avatar = @wow.get_character_avatar(@alt.wow_server, @alt.wow_name)
     if current_user.alts << @alt
-      redirect_to user_settings_path(tab: :alts), notice: 'Alt was successfully added.'
+      flash[:notice] = "Alt was successfully created!"
+      render :js => "window.location = '#{user_settings_path(tab: :alts)}'"
     else
-      flash[:warning] = "Någon gick galet.."
-      redirect_to user_settings_path(tab: :alts)
+      respond_to do |format|
+        format.json { render json: @alt.errors.full_messages, status: 422, type: "alt_request" }
+      end
     end
   end
 

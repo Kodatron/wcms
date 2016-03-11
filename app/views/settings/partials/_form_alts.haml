@@ -25,8 +25,7 @@
       %tbody
       - current_user.alts.each do |alt|
         %tr
-          %td
-            =image_tag(render_thumbnail_url(alt.wow_region, alt.avatar),class: "img-table circle")
-          %td
-            = alt.wow_name
+          %td= image_tag(render_thumbnail_url(alt.wow_region, alt.avatar),class: "img-table circle")
+          %td= alt.wow_name
           %td= alt.wow_server
+          %td= alt.wow_spec

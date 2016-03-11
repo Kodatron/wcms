@@ -1,5 +1,5 @@
 = form_for @alt, remote: true, format: :json, html: {class: :ajax_form} do |f|
-  %div#error_explanation{style:'display:none'}
+  %div#error_explanation
     %ul#errors
   = f.hidden_field :avatar, value: ''
   .input_field.col.s6

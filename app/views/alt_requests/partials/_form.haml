@@ -1,5 +1,5 @@
 = form_for @alt_request, remote: true, format: :json, html: {class: :ajax_form} do |f|
-  %div#error_explanation{style:'display:none'}
+  %div#error_explanation
     %ul#errors
   .input_field.col.s6
     = f.label :alt_id

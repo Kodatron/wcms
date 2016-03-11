@@ -16,7 +16,7 @@ class AltsController < ApplicationController
       render :js => "window.location = '#{user_settings_path(tab: :alts)}'"
     else
       respond_to do |format|
-        format.json { render json: @alt.errors.full_messages, status: 422, type: "alt_request" }
+        format.json { render json: @alt.errors.full_messages, status: 422 }
       end
     end
   end

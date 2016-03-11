@@ -4,10 +4,6 @@ ready = ->
   $('.slider').hide()
 
   $('a').click ->
-    error_list = document.getElementById('errors')
-    while error_list.firstChild
-      error_list.removeChild error_list.firstChild
-
     form = this.getAttribute('data-slider-content')
 
     if $(form).is(":visible")

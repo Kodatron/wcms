@@ -6,6 +6,10 @@ class AltsController < ApplicationController
   end
 
   def edit
+    @alt = Alt.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @alt }
+    end
   end
 
   def create

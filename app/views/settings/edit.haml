@@ -18,6 +18,10 @@
           %i.material-icons.left supervisor_account
           = t(:Alts)
       %li
+        = link_to user_settings_path(tab: :alt_requests), class: ["collection-item", active_css_element(params[:tab], :alt_requests)].join(' ') do
+          %i.material-icons.left supervisor_account
+          = t(:alt_requests)
+      %li
         = link_to user_settings_path(tab: :twitch), class: ["collection-item", active_css_element(params[:tab], :twitch)].join(' ') do
           %i.material-icons.left video_label
           = t(:Twitch)

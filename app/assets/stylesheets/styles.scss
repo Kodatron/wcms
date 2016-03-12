@@ -201,6 +201,20 @@
   padding: 0 0.8rem;
 }
 
+/**** Status ****/
+
+.pending{
+  color: #ffab00;
+}
+
+.approved{
+  color: #4CAF50;
+}
+
+.declined{
+  color: #c70303;
+}
+
 
 /**** Custom Tabs ****/
 .custom-tab{

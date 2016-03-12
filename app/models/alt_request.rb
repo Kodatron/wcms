@@ -4,4 +4,9 @@ class AltRequest < ActiveRecord::Base
   belongs_to :alt
 
   enum status: [:pending, :approved, :declined]
+
+  scope :settings, -> {
+    order("status ASC, created_at DESC")
+    .limit(10)
+  }
 end

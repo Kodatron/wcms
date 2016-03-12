@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
-  resources :alts
   resources :profiles
   resources :users
   resources :pages
@@ -30,7 +29,7 @@ Rails.application.routes.draw do
     get :servers
   end
 
-  resources :alt do
+  resources :alts do
     get :new
   end
 
@@ -52,6 +51,6 @@ Rails.application.routes.draw do
 
   resources :servers, only: [:index]
 
-  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|twitch/ }, :defaults => {:tab => 'settings'}
+  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|alt_requests|twitch/ }, :defaults => {:tab => 'settings'}
 
 end

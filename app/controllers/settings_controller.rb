@@ -5,6 +5,9 @@ class SettingsController < ApplicationController
   end
 
   def edit
+    if params[:tab] == 'alt_requests'
+      @alt_requests = current_user.alt_requests.settings
+    end
   end
 
   def create
@@ -36,10 +39,10 @@ class SettingsController < ApplicationController
       @user = current_user
       @setting = current_user.setting
       @profile = current_user.profile
-      if params[:tab] == 'alts'
-        @alt = Alt.new
-        @alt_request = AltRequest.new
+      unless @alt
+        @alt = Alt.new if params[:tab] == 'alts'
       end
+      @alt_request = AltRequest.new if params[:tab] == 'alt_requests'
     end
 
     def setting_params

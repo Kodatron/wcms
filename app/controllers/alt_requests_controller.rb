@@ -13,7 +13,7 @@ class AltRequestsController < ApplicationController
 
     if current_user.alt_requests << @alt_request
       flash[:notice] =  "Request successfully sent!"
-      render :js => "window.location = '#{user_settings_path(tab: :alts)}'"
+      render :js => "window.location = '#{user_settings_path(tab: :alt_requests)}'"
     else
       respond_to do |format|
         format.json { render json: @alt_request.errors.full_messages, status: 422 }

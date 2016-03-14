@@ -1,0 +1,32 @@
+.row
+  .col.s12
+    %h5.thin= t(:Alt_requests)
+    = link_to t(:New_alt_request), "#", class: 'btn', data: { slider_content: '#new_alt_request' }
+
+.col.s12.slider#new_alt_request
+  .col.s12
+    %h5.thin= t(:Create_alt_request)
+  - if current_user.has_active_request?
+    .col.s12
+      %p= t(:You_have_pending_alt_request)
+  - else
+    = render partial: "alt_requests/partials/form"
+.row
+  .col.s12
+    %table
+      %thead
+        %th
+        %th= t(:Name)
+        %th= t(:Spec)
+        %th= t(:Created_at)
+        %th= t(:Reason)
+        %th= t(:Status)
+      %tbody
+      - @alt_requests.each do |r|
+        %tr
+          %td= image_tag(render_thumbnail_url(r.alt.wow_region, r.alt.avatar),class: "img-table circle")
+          %td= r.alt.wow_name
+          %td= r.alt.wow_spec
+          %td= r.created_at.strftime("%Y-%m-%d")
+          %td= truncate(r.reason, length: 20)
+          %td{class: r.status}= r.status.capitalize

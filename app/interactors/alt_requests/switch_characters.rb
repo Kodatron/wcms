@@ -13,6 +13,5 @@ module AltRequests
         context[:document].update_attributes!(alt_id: context[:new_alt].id)
       end
     end
-
   end
 end

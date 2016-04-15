@@ -8,6 +8,5 @@ module AltRequests
         context[:alt].destroy
       end
     end
-
   end
 end

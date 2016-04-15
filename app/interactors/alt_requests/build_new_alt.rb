@@ -13,6 +13,5 @@ module AltRequests
         context[:new_alt] = new_alt
       end
     end
-
   end
 end

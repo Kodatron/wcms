@@ -21,5 +21,6 @@ module Wcms
     #I18n
     config.i18n.default_locale = :en
     config.autoload_paths << "#{config.root}/app/"
+    config.autoload_paths << "#{config.root}/lib"
   end
 end

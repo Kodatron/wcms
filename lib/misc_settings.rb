@@ -18,15 +18,16 @@ module MiscSettings
     option.nil? ? info : info[option]
   end
 
-  def self.site_info option = nil
-    info = {
-      :copyright  => "Copyright #{guild_info(:name)} #{site_years}. All rights reserved.",
-      :stage      => 'Alpha',
-      :version    => '0.1',
-      :contact    => 'bjorngrunde@live.se'
-    }
+  def self.copyright
+    "Copyright © #{guild_info(:name)} #{site_years}. All rights reserved."
+  end
 
-    option.nil? ? info : info[option]
+  def self.version
+    'v.0.1 Alpha'
+  end
+
+  def self.contact
+    'bjorngrunde@live.se'
   end
 
   def self.developers

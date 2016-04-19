@@ -11,7 +11,7 @@ module MiscSettings
       :name     =>  "Family Legion",
       :faction  =>  "Alliance",
       :region   =>  "EU",
-      :realm    =>  "Grim Batol",
+      :server    =>  "Grim Batol",
       :country  =>  "Sweden"
     }
 

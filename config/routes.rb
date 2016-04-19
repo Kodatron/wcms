@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :profiles
   resources :users
-  resources :pages
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :settings, except: [:show]
@@ -18,6 +17,12 @@ Rails.application.routes.draw do
   delete '/logout'  => 'sessions#destroy'
   get 'about_us' => 'pages#about_us', as: :about
   get 'dashboard' => 'pages#dashboard', as: :dashboard
+
+  namespace :pages do
+    get :about_us
+    get :dashboard
+    get :guild
+  end
 
   namespace :admin do
     get :index

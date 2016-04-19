@@ -23,7 +23,8 @@ class WowApi
   end
 
   def get_simple_guild_profile(server, name, *args)
-    RBattlenet::Wow::Guild.find(name: name, realm: server)
+    response = RBattlenet::Wow::Guild.find(name: name, realm: server)
+    parse_data(response)
   end
 
   def get_advanced_guild_profile(server, name, fields, *args)
@@ -60,5 +61,13 @@ class WowApi
 
   def get_realms(region, *args)
     RBattlenet::Wow::Realm.status
+  end
+
+  def parse_data data
+    data_hash = Hash.new
+
+    data.each do |key, value|
+      data_hash.merge!(key.underscore.to_sym => value)
+    end
   end
 end

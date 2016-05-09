@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :alt_requests, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :news, dependent: :destroy
+  has_many :gears, dependent: :destroy
+  has_many :armory_updates, dependent: :destroy
 
   accepts_nested_attributes_for :profile
 
@@ -30,6 +32,14 @@ class User < ActiveRecord::Base
     joins("INNER JOIN profiles p on users.id = p.user_id").
     where("users.name LIKE ? or users.email LIKE ? or p.firstname LIKE ? or p.lastname LIKE ? or p.wow_region LIKE ? or p.wow_server LIKE ? or p.phone LIKE ?", *(["%#{term}%"]*7))
   }
+
+  def latest_armory_update
+    self.armory_updates.last.created_at.strftime("%Y-%m-%d - %H:%M:%S")
+  end
+
+  def current_gear
+    self.gears.active
+  end
 
   def init_settings
     setting = Setting.new(user_id: self.id, locale: 0)

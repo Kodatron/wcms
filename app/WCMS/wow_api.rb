@@ -10,12 +10,17 @@ class WowApi
     thumbnail['thumbnail']
   end
 
-  def get_character_data(server, name, fields, *args)
-    RBattlenet::Wow::Character.find(name: @user.name, realm: @user.profile.wow_server, fields: fields)
+  def get_character_data(server, name, *args)
+    RBattlenet::Wow::Character.find(name: name, realm: server, fields: ['items'])
   end
 
   def get_wow_item(id, *args)
     RBattlenet::Wow::Item.find(id: id);
+  end
+
+  def get_transmog_icon(id, *args)
+    icon = RBattlenet::Wow::Item.find(id: id)
+    icon['icon']
   end
 
   def get_item_set_bonus(id, *args)

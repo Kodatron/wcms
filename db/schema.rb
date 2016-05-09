@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306003549) do
+ActiveRecord::Schema.define(version: 20160509071112) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -32,6 +32,39 @@ ActiveRecord::Schema.define(version: 20160306003549) do
     t.string   "avatar",     limit: 255
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "armory_updates", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "enchants", force: :cascade do |t|
+    t.integer  "gear_id",    limit: 4
+    t.integer  "wow_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "gears", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.integer  "item_id",       limit: 4
+    t.string   "name",          limit: 255
+    t.string   "thumbnail",     limit: 255
+    t.integer  "quality",       limit: 1,   default: 0
+    t.integer  "ilvl",          limit: 4
+    t.integer  "item",          limit: 1,   default: 0
+    t.string   "url",           limit: 255
+    t.boolean  "active",                    default: false
+    t.boolean  "enchanted",                 default: false
+    t.boolean  "gem",                       default: false
+    t.boolean  "transmogged",               default: false
+    t.string   "content",       limit: 255
+    t.boolean  "set",                       default: false
+    t.integer  "item_upgrades", limit: 4,   default: 0
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "guild_applications", force: :cascade do |t|
@@ -101,6 +134,13 @@ ActiveRecord::Schema.define(version: 20160306003549) do
     t.datetime "updated_at",                         null: false
   end
 
+  create_table "set_pieces", force: :cascade do |t|
+    t.integer  "gear_id",    limit: 4
+    t.string   "wow_id",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "settings", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.integer  "locale",     limit: 1, default: 0
@@ -123,5 +163,12 @@ ActiveRecord::Schema.define(version: 20160306003549) do
   end
 
   add_index "users", ["email", "name"], name: "index_users_on_email_and_name", unique: true, using: :btree
+
+  create_table "wow_gems", force: :cascade do |t|
+    t.integer  "gear_id",    limit: 4
+    t.integer  "wow_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
 end

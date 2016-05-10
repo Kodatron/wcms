@@ -16,6 +16,7 @@ gem 'rbattlenet'
 gem 'bcrypt'
 gem 'gretel'
 gem "interactor-rails", "~> 2.0"
+gem 'wowheadr'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

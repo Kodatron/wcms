@@ -2,20 +2,7 @@
   %div.row
     %div.col.12
       %p= "Senast uppdaterad: #{@user.latest_armory_update}"
-      - @gears.each do |gear|
-        %div.col.3
-          -#= image_tag "http://us.media.blizzard.com/wow/icons/56/#{gear.thumbnail}.jpg", class: "img-nav circle"
-          -#= link_to '[Felstalker Bracers]', '//www.wowhead.com/item=25697', class: 'q3', title: '', rel: 'gems=23121&amp;ench=2647&amp;pcs=25695:25696:25697'
-          %a{:href => "#", :rel => "item=#{gear.item_id}"}
-        %div.col.9
-          %p= gear.inspect
+    - @gears.each do |gear|
 
-          - if gear.has_gems?
-            - gear.wow_gems.each do |wow_gem|
-              %p= wow_gem.inspect
-
-          - if gear.is_enchanted?
-            %p= gear.enchant.inspect
-
-          - if gear.is_set_piece?
-            %p= "Set pieces: #{gear.get_set_pieces}"
+      %div.col.s12
+        %a{:href => "#", :rel => "item=#{gear.item_id}&amp;bonus=#{gear.get_bonus}&amp;upgd=#{gear.item_upgrades}"}

@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
                         allow_blank: true
 
   has_one :profile, dependent: :destroy
-  has_one :setting, dependent: :destroy
+  has_one  :setting, dependent: :destroy
   has_many :alts, dependent: :destroy
   has_many :alt_requests, dependent: :destroy
   has_many :posts, dependent: :destroy

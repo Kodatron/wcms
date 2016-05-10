@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509071112) do
+ActiveRecord::Schema.define(version: 20160510182605) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160509071112) do
     t.boolean  "gem",                       default: false
     t.boolean  "transmogged",               default: false
     t.string   "content",       limit: 255
+    t.string   "bonus",         limit: 255
     t.boolean  "set",                       default: false
     t.integer  "item_upgrades", limit: 4,   default: 0
     t.datetime "created_at",                                null: false
@@ -166,9 +167,9 @@ ActiveRecord::Schema.define(version: 20160509071112) do
 
   create_table "wow_gems", force: :cascade do |t|
     t.integer  "gear_id",    limit: 4
-    t.integer  "wow_id",     limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "wow_id",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

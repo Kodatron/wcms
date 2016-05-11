@@ -5,4 +5,4 @@
     - @gears.each do |gear|
 
       %div.col.s12
-        %a{:href => "#", :rel => "item=#{gear.item_id}&amp;bonus=#{gear.get_bonus}&amp;upgd=#{gear.item_upgrades}"}
+        %a{:href => "#", :rel => gear.build_link}

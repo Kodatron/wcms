@@ -1,4 +1,5 @@
 class Gear < ActiveRecord::Base
+  include WcmsModules::Tooltip
   belongs_to :user
   has_one :enchant
   has_one :set_piece
@@ -41,7 +42,7 @@ class Gear < ActiveRecord::Base
     set_pieces.each do |pi|
       ids << pi.to_i
     end
-    ids
+    ids.join(":")
   end
 
   def get_gems
@@ -50,7 +51,7 @@ class Gear < ActiveRecord::Base
     gems.each do |pi|
       ids << pi.to_i
     end
-    ids
+    ids.join(":")
   end
 
   def gear_enchant

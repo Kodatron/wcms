@@ -26,6 +26,10 @@ class Gear < ActiveRecord::Base
     self.bonus == "[]" ? false : true
   end
 
+  def has_bonus_stats?
+    true
+  end
+
   def get_bonus
     return 0 unless self.has_bonus?
     ids = []

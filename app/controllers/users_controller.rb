@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @gears = @user.current_gear.includes(:enchant).includes(:wow_gem).includes(:set_piece)
+    render layout: 'layouts/application'
   end
 
   def new

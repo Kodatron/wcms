@@ -19,7 +19,6 @@ module ApplicationHelper
   end
 
   def render_avatar_url region, avatar
-    avatar = avatar.sub! 'avatar', 'profile'
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
 

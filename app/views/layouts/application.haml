@@ -5,8 +5,10 @@
     = stylesheet_link_tag 'application', media: 'all', data: { turbolinks_track: true }
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_include_tag :application, data: { turbolinks_track: true }
-    = stylesheet_link_tag '//wow.zamimg.com/widgets/power.js'
+    %script{src: "//wow.zamimg.com/widgets/power.js", type: "text/javascript"}
     = csrf_meta_tags
+    :javascript
+      var wowhead_tooltips = { "colorlinks": true, "iconizelinks": true, "renamelinks": true }
 
   %body.community-background
     = render partial: 'layouts/partials/main_menu'

@@ -1,9 +1,9 @@
-%div.container.black-text
-  %div.row
-    %div.col.12
-      %p= "Senast uppdaterad: #{@user.latest_armory_update}"
-    - @gears.each do |gear|
+%div.col.12
+  %p= "Senast uppdaterad: #{@user.latest_armory_update}"
+  = image_tag(render_avatar_url(@user.profile.wow_region, @user.profile.profile_url))
 
-      %div.col.s12
-        -#= image_tag "http://us.media.blizzard.com/wow/icons/56/#{gear.thumbnail}.jpg", class: 'circle'
-        %a{ :rel => gear.build_link, :href => "#" }
+- @gears.each do |gear|
+
+  %div.col.12.black-text
+    -#= image_tag "http://us.media.blizzard.com/wow/icons/56/#{gear.thumbnail}.jpg", class: 'circle'
+    %a{ :rel => gear.build_link, :href => "#" }

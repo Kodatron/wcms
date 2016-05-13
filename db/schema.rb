@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513193155) do
+ActiveRecord::Schema.define(version: 20160513203015) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -110,16 +110,17 @@ ActiveRecord::Schema.define(version: 20160513193155) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "wow_region", limit: 1,   default: 0
-    t.string   "wow_server", limit: 255
-    t.integer  "wow_class",  limit: 1,   default: 0
-    t.string   "firstname",  limit: 255
-    t.string   "lastname",   limit: 255
-    t.string   "phone",      limit: 255
-    t.string   "avatar",     limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "user_id",     limit: 4
+    t.integer  "wow_region",  limit: 1,   default: 0
+    t.string   "wow_server",  limit: 255
+    t.integer  "wow_class",   limit: 1,   default: 0
+    t.string   "firstname",   limit: 255
+    t.string   "lastname",    limit: 255
+    t.string   "phone",       limit: 255
+    t.string   "avatar",      limit: 255
+    t.string   "profile_url", limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "servers", force: :cascade do |t|

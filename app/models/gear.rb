@@ -6,7 +6,7 @@ class Gear < ActiveRecord::Base
   has_one :wow_gem
 
   enum item: [:head, :neck, :shoulder, :back, :chest, :shirt, :tabard, :wrist, :feet, :hands, :waist, :legs, :finger1, :finger2, :trinket1, :trinket2, :mainHand, :offHand]
-  enum quality: [:poor, :common, :uncommon, :rare, :epic, :legendary, :artifact, :hierloom]
+  enum quality: [:poor, :common, :uncommon, :rare, :epic, :legendary, :artifact, :heirloom]
 
   scope :active, -> {where(active: true)}
 
@@ -23,39 +23,19 @@ class Gear < ActiveRecord::Base
   end
 
   def has_bonus?
-    self.bonus == "[]" ? false : true
-  end
-
-  def has_bonus_stats?
-    true
+    self.bonus.blank? ? false : true
   end
 
   def get_bonus
-    return 0 unless self.has_bonus?
-    ids = []
-    bonuses = self.bonus.split.to_a
-    bonuses.each do |bonus|
-      ids << bonus.to_i
-    end
-    ids.join(":")
+    self.bonus
   end
 
   def get_set_pieces
-    ids = []
-    set_pieces = self.set_piece.wow_id.split.to_a
-    set_pieces.each do |pi|
-      ids << pi.to_i
-    end
-    ids.join(":")
+    self.set_piece.wow_id
   end
 
   def get_gems
-    ids = []
-    gems = self.wow_gem.wow_id.split.to_a
-    gems.each do |pi|
-      ids << pi.to_i
-    end
-    ids.join(":")
+    self.wow_gem.wow_id
   end
 
   def gear_enchant

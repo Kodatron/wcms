@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510182605) do
+ActiveRecord::Schema.define(version: 20160513193155) do
 
   create_table "alt_requests", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -52,18 +52,13 @@ ActiveRecord::Schema.define(version: 20160510182605) do
     t.integer  "item_id",       limit: 4
     t.string   "name",          limit: 255
     t.string   "thumbnail",     limit: 255
+    t.string   "bonus",         limit: 255
+    t.string   "content",       limit: 255
     t.integer  "quality",       limit: 1,   default: 0
     t.integer  "ilvl",          limit: 4
     t.integer  "item",          limit: 1,   default: 0
-    t.string   "url",           limit: 255
-    t.boolean  "active",                    default: false
-    t.boolean  "enchanted",                 default: false
-    t.boolean  "gem",                       default: false
-    t.boolean  "transmogged",               default: false
-    t.string   "content",       limit: 255
-    t.string   "bonus",         limit: 255
-    t.boolean  "set",                       default: false
     t.integer  "item_upgrades", limit: 4,   default: 0
+    t.boolean  "active",                    default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
@@ -151,6 +146,7 @@ ActiveRecord::Schema.define(version: 20160510182605) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",              limit: 255
+    t.integer  "level",             limit: 4,   default: 1
     t.string   "email",             limit: 255
     t.string   "password_digest",   limit: 255
     t.datetime "created_at",                                    null: false

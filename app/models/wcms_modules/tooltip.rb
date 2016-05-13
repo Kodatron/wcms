@@ -4,7 +4,7 @@ module WcmsModules::Tooltip
     data = []
 
     data << [:item, self.item_id]
-    data << [:upgr, self.item_upgrades]
+    data << [:upgd, self.item_upgrades]
 
     if self.has_bonus?
       data << [:bonus, self.get_bonus]
@@ -18,8 +18,8 @@ module WcmsModules::Tooltip
     if self.is_set_piece?
       data << [:pcs, self.get_set_pieces]
     end
-    if self.hierloom?
-      data << [:lvl, 100]
+    if self.heirloom?
+      data << [:lvl, self.user.level]
     end
 
     link = []

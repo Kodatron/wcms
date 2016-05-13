@@ -5,4 +5,5 @@
     - @gears.each do |gear|
 
       %div.col.s12
-        %a{:href => "#", :rel => gear.build_link}
+        -#= image_tag "http://us.media.blizzard.com/wow/icons/56/#{gear.thumbnail}.jpg", class: 'circle'
+        %a{ :rel => gear.build_link, :href => "#" }

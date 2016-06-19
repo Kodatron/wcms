@@ -4,19 +4,19 @@ class UpdateArmory
 
   def call
     context[:api] = WowApi.new
-    context[:users] = User.all.includes(:profile)
+    context[:characters] = Character.all.includes(:user)
 
-    context[:users].each do |user|
-      context[:user] = user
-      user.gears.update_all(active: 0)
+    context[:characters].each do |char|
+      context[:char] = char
+      char.gears.update_all(active: 0)
       get_armory = Gears::GetArmoryData.call(
-        user: user,
+        character: char,
         api: context[:api]
       )
       if get_armory.success?
         create_gear = Gears::CreateUserArmory.call(
           armory_data: get_armory.armory_data,
-          user: user,
+          character: char,
           api: context[:api]
         )
       else

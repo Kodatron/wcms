@@ -7,7 +7,7 @@ module Gears
       context[:armory_data].each do |items|
         items.each do |item, data|
           gear = Gear.new(
-            user_id: context[:user].id,
+            character_id: context[:character].id,
             item_id: data['id'],
             name: data['name'],
             ilvl: calculate_ilvl(data),
@@ -42,7 +42,7 @@ module Gears
         end
       end
 
-      armory_update = ArmoryUpdate.new(user_id: context[:user].id)
+      armory_update = ArmoryUpdate.new(user_id: context[:character].user.id)
       armory_update.save!
 
     end

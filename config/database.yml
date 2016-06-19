@@ -1,16 +1,16 @@
 development:
   adapter: mysql2
-  database: <%= ENV['DB_NAME'] %>
-  encoding: utf8
-  host: <%= ENV["DB_HOST"] %>
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASS"] %>
-
-
-test:
-  adapter: mysql2
-  database: wcms_test
+  database: wcms_dev
   encoding: utf8
   host: 127.0.0.1
   username: root
   password:
+  socket: /tmp/mysql.sock
+# test:
+#   adapter: mysql2
+#   database: <%= ENV['DB_NAME'] %>
+#   encoding: utf8
+#   host: <%= ENV["DB_HOST"] %>
+#   username: <%= ENV["DB_USERNAME"] %>
+#   password: <%= ENV["DB_PASS"] %>
+#   socket: /tmp/mysql.sock

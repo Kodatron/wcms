@@ -15,6 +15,7 @@ module ApplicationHelper
   end
 
   def render_thumbnail_url region, avatar
+    #return "http://eu.battle.net/static-render/eu/grim-batol/151/106260375-avatar.jpg"
     "http://#{region}.battle.net/static-render/eu/#{avatar}"
   end
 

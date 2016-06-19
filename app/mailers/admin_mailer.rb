@@ -19,7 +19,7 @@ class AdminMailer < ApplicationMailer
     @message = message
     @context = context
     @admins.each do |admin|
-      mail(to: admin.email, subject: )
+      mail(to: admin.email, subject: "Ett fel uppstod i WCMS..")
     end
   end
 end

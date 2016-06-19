@@ -25,9 +25,9 @@
           = link_to dashboard_path, class: "" do
             %i.material-icons developer_board
         %li
-          =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "img-nav  circle")
+          =image_tag(render_thumbnail_url(current_user.main.wow_region, current_user.main.avatar_url),class: "img-nav  circle")
         %li
-          =link_to current_user.name, "#", class: "dropdown-button wow #{current_user.profile.wow_class}", 'data-activates' => 'profile-dropdown'
+          =link_to current_user.main.name, "#", class: "dropdown-button wow #{current_user.main.wow_class}", 'data-activates' => 'profile-dropdown'
 
 %ul#profile-dropdown.dropdown-content
   %li=link_to t(:Profile), "#"

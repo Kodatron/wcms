@@ -2,35 +2,25 @@
   %div.col.s12
     =form_for(@user) do |f|
       = render 'shared/form_errors', target: @user
-      %div.input_field.col.s6
-        = f.label :name
-        = f.text_field :name
 
       %div.input_field.col.s6
         = f.label :email
         = f.email_field :email
 
-      =f.fields_for :profile do |profile|
-        %div.input_field.col.s6
-          = profile.label :firstname
-          = profile.text_field :firstname
-        %div.input_field.col.s6
-          = profile.label :lastname
-          = profile.text_field :lastname
-        %div.input_field.col.s6
-          = profile.label :phone
-          = profile.text_field :phone
-        %div.input_field.col.s6
-          = profile.label  :wow_server
-          = profile.text_field :wow_server
+      %div.input_field.col.s6
+        = f.label :firstname
+        = f.text_field :firstname
+      %div.input_field.col.s6
+        = f.label :lastname
+        = f.text_field :lastname
+      %div.input_field.col.s6
+        = f.label :phone
+        = f.text_field :phone
 
-        - if @user.new_record?
-          %div.input_field.col.s6
-            = profile.label :wow_class
-            = profile.select :wow_class,  Profile.wow_classes.keys.to_a.map { |w| [w.humanize, w]}
-          %div.input_field.col.s6
-            = profile.label :wow_region
-            = profile.select :wow_region, Profile.wow_regions.keys.to_a.map { |e| [e.humanize, e] }
+       =f.fields_for :characters do |char|
+        %div.input_field.col.s6
+          = char.label  :wow_server
+          = char.text_field :wow_server
 
       %div.input_field.col.s12
         =f.submit "Save", class: "btn btn-primary"

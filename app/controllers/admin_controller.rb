@@ -30,7 +30,7 @@ class AdminController < ApplicationController
 
   def users
     @search = params[:term]
-    @users = User.all.includes(:profile)
+    @users = User.all
 
     if @search
       @users = @users.search(@search)

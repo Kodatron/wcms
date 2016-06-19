@@ -10,6 +10,11 @@ class WowApi
     thumbnail['thumbnail']
   end
 
+  def get_character_level(server, name)
+    level = RBattlenet::Wow::Character.find(name: name, realm: server)
+    level['level']
+  end
+
   def get_character_data(server, name, *args)
     RBattlenet::Wow::Character.find(name: name, realm: server, fields: ['items'])
   end

@@ -19,7 +19,7 @@ module WcmsModules::Tooltip
       data << [:pcs, self.get_set_pieces]
     end
     if self.heirloom?
-      data << [:lvl, self.user.level]
+      data << [:lvl, self.character.level]
     end
 
     link = []

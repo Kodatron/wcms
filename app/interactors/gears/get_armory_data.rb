@@ -4,10 +4,9 @@ module Gears
 
     def call
       context[:armory_data] = []
-      user = context[:user]
-      profile = user.profile
+      character = context[:character]
       # Get character items
-      items = context[:api].get_character_data(profile.wow_server, user.name)
+      items = context[:api].get_character_data(character.wow_server, character.name)
       # Clean up the data and put into a hash
       # Delete data we wont need
       items['items'].delete('averageItemLevel')

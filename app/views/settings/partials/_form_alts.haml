@@ -1,12 +1,12 @@
 .row
   .col.s12
     %h5.thin= t(:Alts)
-    = link_to t(:Add_an_alt), new_alt_path, remote: true, class: 'btn', data: { slider_content: '#new_alt' }
+    = link_to t(:Add_an_alt), new_character_path, remote: true, class: 'btn', data: { slider_content: '#new_alt' }
 
 .col.s12.slider#new_alt
   .col.s12
     %h5.thin= t(:Add_an_alt)
-  = render partial: "alts/partials/form"
+  = render partial: "characters/partials/form"
 
 .row
   .col.s12
@@ -19,7 +19,7 @@
       %tbody
       - current_user.alts.each do |alt|
         %tr
-          %td= image_tag(render_thumbnail_url(alt.wow_region, alt.avatar),class: "img-table circle")
-          %td= alt.wow_name
-          %td= alt.wow_server
-          %td= alt.wow_spec
+          %td= image_tag(render_thumbnail_url(alt.wow_region, alt.avatar_url),class: "img-table circle")
+          %td= link_to alt.name, character_path(alt)
+          %td= alt.wow_server.humanize
+          %td= alt.wow_spec.humanize

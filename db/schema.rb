@@ -11,27 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513203015) do
+ActiveRecord::Schema.define(version: 20160617180506) do
 
   create_table "alt_requests", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "alt_id",     limit: 4
-    t.string   "reason",     limit: 255
-    t.integer  "status",     limit: 1,   default: 0
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-  end
-
-  create_table "alts", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "wow_name",   limit: 255
-    t.integer  "wow_class",  limit: 1,   default: 0
-    t.integer  "wow_region", limit: 1,   default: 0
-    t.string   "wow_server", limit: 255
-    t.string   "wow_spec",   limit: 255
-    t.string   "avatar",     limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "user_id",      limit: 4
+    t.integer  "character_id", limit: 4
+    t.string   "reason",       limit: 255
+    t.integer  "status",       limit: 1,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "armory_updates", force: :cascade do |t|
@@ -39,6 +27,37 @@ ActiveRecord::Schema.define(version: 20160513203015) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  create_table "characters", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.string   "name",        limit: 255
+    t.integer  "level",       limit: 4,   default: 1
+    t.integer  "wow_region",  limit: 1,   default: 0
+    t.string   "wow_server",  limit: 255
+    t.integer  "wow_class",   limit: 1,   default: 0
+    t.integer  "wow_spec",    limit: 1,   default: 0
+    t.string   "avatar_url",  limit: 255
+    t.string   "profile_url", limit: 255
+    t.integer  "state",       limit: 4
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,     default: 0, null: false
+    t.integer  "attempts",   limit: 4,     default: 0, null: false
+    t.text     "handler",    limit: 65535,             null: false
+    t.text     "last_error", limit: 65535
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "enchants", force: :cascade do |t|
     t.integer  "gear_id",    limit: 4
@@ -48,7 +67,7 @@ ActiveRecord::Schema.define(version: 20160513203015) do
   end
 
   create_table "gears", force: :cascade do |t|
-    t.integer  "user_id",       limit: 4
+    t.integer  "character_id",  limit: 4
     t.integer  "item_id",       limit: 4
     t.string   "name",          limit: 255
     t.string   "thumbnail",     limit: 255
@@ -88,16 +107,6 @@ ActiveRecord::Schema.define(version: 20160513203015) do
     t.datetime "updated_at",                           null: false
   end
 
-  create_table "news", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "body",        limit: 65535
-    t.integer  "permissions", limit: 1,     default: 0
-    t.integer  "views",       limit: 4
-    t.integer  "status",      limit: 1,     default: 0
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
     t.integer  "status",       limit: 1,     default: 0
@@ -107,20 +116,6 @@ ActiveRecord::Schema.define(version: 20160513203015) do
     t.datetime "published_at"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.integer  "wow_region",  limit: 1,   default: 0
-    t.string   "wow_server",  limit: 255
-    t.integer  "wow_class",   limit: 1,   default: 0
-    t.string   "firstname",   limit: 255
-    t.string   "lastname",    limit: 255
-    t.string   "phone",       limit: 255
-    t.string   "avatar",      limit: 255
-    t.string   "profile_url", limit: 255
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
   end
 
   create_table "servers", force: :cascade do |t|
@@ -146,21 +141,22 @@ ActiveRecord::Schema.define(version: 20160513203015) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",              limit: 255
-    t.integer  "level",             limit: 4,   default: 1
     t.string   "email",             limit: 255
+    t.string   "firstname",         limit: 255
+    t.string   "lastname",          limit: 255
+    t.string   "phone",             limit: 255
     t.string   "password_digest",   limit: 255
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
     t.string   "remember_digest",   limit: 255
     t.string   "activation_digest", limit: 255
-    t.boolean  "activated",                     default: false
+    t.integer  "activated",         limit: 4,   default: 0
     t.datetime "activated_at"
     t.string   "reset_digest",      limit: 255
     t.datetime "reset_sent_at"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
-  add_index "users", ["email", "name"], name: "index_users_on_email_and_name", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "wow_gems", force: :cascade do |t|
     t.integer  "gear_id",    limit: 4

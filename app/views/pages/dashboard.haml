@@ -6,10 +6,10 @@
         - (0..2).each do |i|
           %li
             %div.collapsible-header{"data-collapsible" => "accordion"}
-              =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "circle")
+              =image_tag(render_thumbnail_url(current_user.main.wow_region, current_user.main.avatar_url), class: "circle")
               %p
-                %span{ class: current_user.profile.wow_class}
-                  = "#{current_user.name}"
+                %span{ class: current_user.main.wow_class}
+                  = "#{current_user.main.name}"
                 responded to thread
                 = link_to "Recruitment of druids", "#"
                 in the druid forums

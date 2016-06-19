@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_secure_password :validations => false
 
 
-  validates :name,  presence: true, length: { maximum: 50 }
+  validates :firstname,  presence: true, length: { maximum: 50 }
+  validates :lastname,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: {case_sensitive: false}
@@ -17,21 +18,25 @@ class User < ActiveRecord::Base
   validates :password,  length: { minimum: 6 },
                         allow_blank: true
 
-  has_one :profile, dependent: :destroy
   has_one  :setting, dependent: :destroy
-  has_many :alts, dependent: :destroy
   has_many :alt_requests, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :news, dependent: :destroy
-  has_many :gears, dependent: :destroy
   has_many :armory_updates, dependent: :destroy
+  has_many :characters
 
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :characters
 
   scope :search, -> (term) {
-    joins("INNER JOIN profiles p on users.id = p.user_id").
-    where("users.name LIKE ? or users.email LIKE ? or p.firstname LIKE ? or p.lastname LIKE ? or p.wow_region LIKE ? or p.wow_server LIKE ? or p.phone LIKE ?", *(["%#{term}%"]*7))
+    where("users.first_name LIKE ? or users.email LIKE ? or users.lastname LIKE ? or users.phone LIKE ?", *(["%#{term}%"]*4))
   }
+
+  def main
+    self.characters.main
+  end
+
+  def alts
+    self.characters.alts
+  end
 
   def latest_armory_update
     self.armory_updates.last.created_at.strftime("%Y-%m-%d - %H:%M:%S")

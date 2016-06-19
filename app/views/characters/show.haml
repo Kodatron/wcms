@@ -1,0 +1,7 @@
+%div.col.12.dark-sh-well
+  -#= image_tag(render_avatar_url(@character.wow_region, @character.profile_url))
+  - @character.current_gear.each do |gear|
+
+    %div.col.s12.black-text
+      -#= image_tag "http://us.media.blizzard.com/wow/icons/56/#{gear.thumbnail}.jpg", class: 'circle'
+      %a{ :rel => gear.build_link, :href => "#" }

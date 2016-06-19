@@ -34,9 +34,7 @@ Rails.application.routes.draw do
     get :servers
   end
 
-  resources :alts do
-    get :new
-  end
+  resources :characters
 
   resources :alt_requests do
     post :approve_or_decline
@@ -56,6 +54,6 @@ Rails.application.routes.draw do
 
   resources :servers, only: [:index]
 
-  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|profile|alts|alt_requests|twitch/ }, :defaults => {:tab => 'settings'}
+  get 'settings/:tab' => 'settings#edit', as: :user_settings, :constraints => {:tab => /settings|user|alts|alt_requests|twitch/ }, :defaults => {:tab => 'settings'}
 
 end

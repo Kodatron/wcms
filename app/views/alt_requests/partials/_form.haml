@@ -2,8 +2,8 @@
   %div#error_explanation
     %ul#errors
   .input_field.col.s6
-    = f.label :alt_id
-    = f.select(:alt_id, current_user.alts.map { |alt| [alt.wow_name, alt.id ]})
+    = f.label :character_id
+    = f.select(:character_id, current_user.characters.map { |alt| [alt.name, alt.id ]})
   .input_field.col.s6
     = f.label :reason
     = f.text_field :reason

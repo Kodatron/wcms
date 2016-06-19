@@ -38,11 +38,8 @@ class SettingsController < ApplicationController
     def set_setting
       @user = current_user
       @setting = current_user.setting
-      @profile = current_user.profile
-      unless @alt
-        @alt = Alt.new if params[:tab] == 'alts'
-      end
       @alt_request = AltRequest.new if params[:tab] == 'alt_requests'
+      @character = Character.new if params[:tab] = 'alts'
     end
 
     def setting_params

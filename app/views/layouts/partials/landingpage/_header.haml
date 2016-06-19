@@ -23,10 +23,11 @@
           %li
             = link_to dashboard_path, class: "" do
               %i.material-icons developer_board
-          %li
-            =image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "img-nav  circle")
-          %li
-            =link_to current_user.name, "#", class: "dropdown-button wow #{current_user.profile.wow_class}", 'data-activates' => 'profile-dropdown'
+          - if current_user
+            %li
+              -#=image_tag(render_thumbnail_url(current_user.profile.wow_region, current_user.profile.avatar),class: "img-nav  circle")
+            %li
+              -#=link_to current_user.name, "#", class: "dropdown-button wow #{current_user.profile.wow_class}", 'data-activates' => 'profile-dropdown'
 
         - else
           %li= link_to t(:Apply), new_guild_application_path

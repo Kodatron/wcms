@@ -4,7 +4,7 @@ class HandleGuildApplication
 
   organize [
     ChangeStatus,
-    GuildApplications::CreateUserAndProfileFromApplication,
+    GuildApplications::CreateUserFromApplication,
     Mails::SendGuildApplicationMail
   ]
 

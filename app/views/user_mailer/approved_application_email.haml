@@ -1,8 +1,8 @@
-%p= "Welcome to WCMS,  #{@user.profile.firstname}!"
+%p= "Welcome to WCMS,  #{@user.firstname}!"
 %p Din ansökan har blivit godkänd.
 %p= "Message: #{@reason}"
-%p To activate your account, klick the link below and choose a password. Then you can login.
+%p To activate your account, click the link below and choose a password. After you have chosen your password you can start usgin our site.
 
 %p= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email)
 
-%p= "Mvh #{@admin.name} - WCMS Crew"
+%p= "Mvh #{@admin.firstname} - WCMS Crew"

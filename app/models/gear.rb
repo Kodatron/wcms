@@ -1,6 +1,6 @@
 class Gear < ActiveRecord::Base
   include WcmsModules::Tooltip
-  belongs_to :user
+  belongs_to :character
   has_one :enchant
   has_one :set_piece
   has_one :wow_gem

@@ -1,7 +1,7 @@
 class AltRequest < ActiveRecord::Base
   validates :reason, presence: true
   belongs_to :user
-  belongs_to :alt
+  belongs_to :character
 
   enum status: [:pending, :approved, :declined]
 

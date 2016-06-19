@@ -8,13 +8,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @gears = @user.current_gear.includes(:enchant).includes(:wow_gem).includes(:set_piece)
+    #@gears = @user.current_gear.includes(:enchant).includes(:wow_gem).includes(:set_piece)
     render layout: 'layouts/application'
   end
 
   def new
     @user = User.new
-    @user.build_profile
+    @user.build_characters
   end
 
   def edit
@@ -62,9 +62,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(
-      :name, :email, :password, :password_confirmation,
-      profile_attributes: [:user_id, :firstname, :lastname, :phone, :wow_region, :wow_server, :wow_class, :avatar]
+      params.require(:user).permit(:email, :password, :password_confirmation, :firstname, :lastname, :phone,
+      characters_attributes: [:user_id, :name, :wow_region, :wow_server, :wow_class, :avatar_url, :profile_url, :level]
       )
     end
 end
